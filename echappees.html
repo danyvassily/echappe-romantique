@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Échappées - Echappee-romantique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1',
+                        'secondary': '#8b5cf6',
+                        'accent': '#06b6d4',
+                        'neutral': '#374151'
+                    },
+                    fontFamily: {
+                        'display': ['Georgia', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 font-body">
+    <!-- Navigation moderne -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-plane text-white text-sm"></i>
+                    </div>
+                    <div class="text-lg font-bold text-slate-800">
+                        <span class="font-serif">Échappée-romantique</span>
+
+                    </div>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#why-us" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
+                    <a href="index.html#directions" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
+                    <a href="index.html#studios" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Découverte</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-amber-600 p-2" aria-label="Ouvrir le menu mobile">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu mobile moderne -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-xl border-t border-slate-200/50">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html#why-us" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Signature</a>
+                <a href="index.html#directions" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Récapitulatif</a>
+                <a href="index.html#studios" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Découverte</a>
+                <a href="echappees.html" class="block px-3 py-2 text-amber-600 font-semibold bg-amber-50 rounded-lg text-sm">Nos Échappées</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section moderne -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-slate-100 overflow-hidden pt-16">
+        <!-- Background décoratif -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(251,191,36,0.1),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.05),transparent_50%)]"></div>
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+         
+            
+            <!-- Titre principal -->
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-slate-800 mb-6 leading-tight mt-[8vh]">
+                Nos Séjours
+                <span class="block bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent mt-[2vh]">d'Exception</span>
+            </h1>
+            
+            <!-- Sous-titre -->
+            <p class="text-xl sm:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Découvrez nos formules uniques pour des moments inoubliables à deux dans la vallée de la Loire
+            </p>
+            
+            <!-- Image centrale moderne -->
+            <div class="relative mb-16">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
+                <img src="assets/img8.jpeg" alt="Amboise" class="relative w-full max-w-2xl mx-auto h-64 sm:h-80 lg:h-96 object-cover rounded-2xl shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section des Échappées moderne -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- En-tête de section -->
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-4 py-2 bg-slate-100 text-slate-600 rounded-full text-sm font-medium mb-6">
+                    <i class="fas fa-star mr-2"></i>
+                    Formules Premium
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-display font-bold text-slate-800 mb-6">
+                    Choisissez votre échappée
+                </h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                    Deux expériences uniques alliant luxe, romance et découverte dans les airs et sur terre
+                </p>
+            </div>
+
+            <!-- Grille des cartes modernes -->
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Carte Découverte moderne -->
+                <div class="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200/50">
+                    <!-- Image avec overlay moderne -->
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="assets/img1.jpeg" alt="Domaine de l'Arbrelle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                        
+                        <!-- Badge moderne -->
+                        <div class="absolute top-6 left-6">
+                            <span class="inline-flex items-center px-3 py-1.5 bg-emerald-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                                <i class="fas fa-star mr-1.5"></i>Populaire
+                            </span>
+                        </div>
+                        
+                        <!-- Prix flottant -->
+                        <div class="absolute top-6 right-6">
+                            <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
+                                <span class="text-2xl font-bold text-slate-800">750€</span>
+                                <span class="block text-xs text-slate-500">par personne</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Titre sur image -->
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Découverte</h3>
+                            <p class="text-sm opacity-90">Domaine de l'Arbrelle, Amboise</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenu de la carte -->
+                    <div class="p-8">
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-bed text-amber-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Chambre raffinée de 20m² avec vue</span>
+                            </div>
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-utensils text-amber-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Petit-déjeuner inclus</span>
+                            </div>
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-landmark text-amber-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Visite des châteaux d'Amboise</span>
+                            </div>
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-tag text-amber-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Réductions chez nos partenaires</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Bouton moderne -->
+                        <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            Réserver cette échappée
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carte Signature moderne -->
+                <div class="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200/50">
+                    <!-- Image avec overlay moderne -->
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="assets/img15.jpeg" alt="Le Clos d'Amboise" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                        
+                        <!-- Badge moderne -->
+                        <div class="absolute top-6 left-6">
+                            <span class="inline-flex items-center px-3 py-1.5 bg-pink-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                                <i class="fas fa-heart mr-1.5"></i>Signature
+                            </span>
+                        </div>
+                        
+                        <!-- Prix flottant -->
+                        <div class="absolute top-6 right-6">
+                            <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
+                                <span class="text-2xl font-bold text-slate-800">1200€</span>
+                                <span class="block text-xs text-slate-500">par personne</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Titre sur image -->
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Séjour Signature</h3>
+                            <p class="text-sm opacity-90">Le Clos d'Amboise</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenu de la carte -->
+                    <div class="p-8">
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-bed text-pink-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Chambre de charme 27m² vue parc</span>
+                            </div>
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-spa text-pink-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Massage duo (1h) + spa (30min)</span>
+                            </div>
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-utensils text-pink-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Expérience gastronomique & brunch</span>
+                            </div>
+                            <div class="flex items-center text-slate-700">
+                                <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-swimming-pool text-pink-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm">Accès piscine chauffée extérieure</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Bouton moderne -->
+                        <button class="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            Réserver cette échappée
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact moderne -->
+    <section class="py-24 bg-gradient-to-br from-slate-50 to-amber-50/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- En-tête moderne -->
+            <div class="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-6">
+                <i class="fas fa-phone mr-2"></i>
+                Réservation
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl font-display font-bold text-slate-800 mb-6">
+                Prêt pour votre séjour ?
+            </h2>
+            <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
+                Contactez-nous pour réserver votre échappée romantique à Amboise
+            </p>
+            
+            <!-- Cartes de contact modernes -->
+            <div class="grid sm:grid-cols-2 gap-6 mb-12">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200/50">
+                    <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-phone text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Par Téléphone</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Réservation directe</p>
+                    <a href="tel:0766416354" class="text-amber-600 font-semibold hover:text-amber-700 transition-colors text-lg">
+                        07 66 41 63 54
+                    </a>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200/50">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-envelope text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Par Email</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Informations détaillées</p>
+                    <a href="mailto:echappeeromantique75@gmail.com" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm break-all">
+                        echappeeromantique75@gmail.com
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Boutons d'action modernes -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:0766416354" class="inline-flex items-center justify-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-phone mr-2"></i>
+                    Réserver maintenant
+                </a>
+                <a href="index.html" class="inline-flex items-center justify-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Retour à l'accueil
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer moderne -->
+    <footer class="bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                
+                <!-- Brand moderne -->
+                <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-plane text-white text-sm"></i>
+                        </div>
+                        <span class="text-amber-400 font-bold text-lg">Échappée Romantique</span>
+                    </div>
+                    
+                    <!-- Contact Info moderne -->
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm">
+                        <a href="tel:0766416354" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            07 66 41 63 54
+                        </a>
+                        <a href="mailto:echappeeromantique75@gmail.com" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span class="hidden sm:inline">echappeeromantique75@gmail.com</span>
+                            <span class="sm:hidden">Email</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Social et Copyright moderne -->
+                <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6">
+                    <a href="https://www.instagram.com/echappee_romantique.75?igsh=bjM1Y2x5bGwzdXgx" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="flex items-center text-slate-300 hover:text-pink-400 transition-colors text-sm">
+                        <i class="fab fa-instagram mr-2"></i>
+                        Rejoignez-nous sur Instagram
+                    </a>
+                    
+                    <p class="text-slate-400 text-xs">
+                        © 2024 <span class="text-amber-400">Échappée Romantique</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="echappees-animations.js"></script>
+</body>
+</html> 
