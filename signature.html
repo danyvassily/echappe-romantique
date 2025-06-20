@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formule Signature - Le Clos d'Amboise | Echappee-romantique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .font-display-custom {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        body {
+            background-color: #fdfaf6;
+        }
+        .text-custom-purple {
+            color: #5441c4;
+        }
+        .bg-custom-purple {
+            background-color: #5441c4;
+        }
+        .border-custom-purple {
+            border-color: #5441c4;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1',
+                        'secondary': '#8b5cf6',
+                        'accent': '#06b6d4',
+                        'neutral': '#374151',
+                        'custom-bg': '#fdfaf6',
+                        'custom-purple': '#5441c4'
+                    },
+                    fontFamily: {
+                        'display': ['Georgia', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-custom-bg font-body text-slate-700">
+    <!-- Navigation moderne -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-plane text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-bold text-slate-800 font-serif">Échappée-romantique</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="signature.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
+                    <a href="index.html#directions" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
+                    <a href="decouverte.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Découverte</a>
+                    <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Nos Échappées</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center text-white">
+        <div class="absolute inset-0 bg-black">
+            <img src="assets/img40.png" alt="Vue panoramique d'Amboise au coucher du soleil" class="w-full h-full object-cover opacity-60">
+        </div>
+        <div class="relative z-10 p-4">
+            <h1 class="font-display text-5xl md:text-7xl font-bold">Séjour <span class="text-amber-400">Signature</span></h1>
+            <p class="text-lg md:text-xl mt-4 max-w-2xl mx-auto">Une expérience romantique d'exception au Clos d'Amboise</p>
+            <div class="mt-8 flex justify-center items-center gap-4">
+                <div class="bg-black/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <div class="text-2xl font-bold">1200€</div>
+                    <div class="text-xs">par personne</div>
+                </div>
+                <div class="bg-black/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <div class="text-2xl font-bold">2 jours</div>
+                    <div class="text-xs">1 nuit</div>
+                </div>
+            </div>
+            <div class="absolute bottom-12 w-full flex justify-center">
+                <a href="#content" class="text-white animate-bounce">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main id="content" class="py-20 md:py-32">
+        <div class="max-w-4xl mx-auto px-6 space-y-24">
+
+            <!-- Card 1: Le Clos d'Amboise -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="overflow-hidden rounded-2xl card-shadow">
+                    <img src="assets/img11.jpeg" alt="Le Clos d'Amboise" class="w-full h-auto object-cover image-zoom-hover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="font-display-custom text-4xl text-custom-purple">Le Clos d'Amboise</h2>
+                    <hr class="w-20 h-0.5 bg-custom-purple mx-auto md:mx-0 my-5 border-0 rounded">
+                    <p>Une nuit dans une chambre double confort avec petit déjeuner.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: La Nuitée -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="md:order-last overflow-hidden rounded-2xl card-shadow">
+                    <img src="assets/img42.png" alt="Chambre de la nuitée" class="w-full h-auto object-cover image-zoom-hover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="font-display-custom text-4xl text-custom-purple">La Nuitée</h2>
+                    <hr class="w-20 h-0.5 bg-custom-purple mx-auto md:mx-0 my-5 border-0 rounded">
+                    <p>Plongez dans un cadre parisien, dans une atmosphère raffinée et apaisante, une décoration de caractère. S'inspirant du XVIIe, avec une belle vue sur la cour, mais aussi, révélant dans le dossier du lit un pan de roman. L'art de vivre balzacien, ottomanes venant parer le savant décor et sa structure ancienne qui rendent chaque séjour unique.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Bien-Être -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="overflow-hidden rounded-2xl card-shadow">
+                    <img src="assets/img4.jpeg" alt="Espace bien-être et spa" class="w-full h-auto object-cover image-zoom-hover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="font-display-custom text-4xl text-custom-purple">Bien-Être</h2>
+                    <hr class="w-20 h-0.5 bg-custom-purple mx-auto md:mx-0 my-5 border-0 rounded">
+                    <p>Entrez dans notre espace et quittez toutes les tensions en accédant à la cabine infrarouge. Un moment de pur luxe et de bien-être absolu où vous serez seuls au monde.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Repas -->
+        <section class="mt-24 md:mt-32">
+            <div class="text-center">
+                <h2 class="font-display-custom text-4xl text-custom-purple">Les Repas</h2>
+                <hr class="w-20 h-0.5 bg-custom-purple mx-auto my-5 border-0 rounded">
+            </div>
+            <div class="mt-12 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img10.jpeg" alt="Arrêt Gourmand" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Art de Déjeuner </h3>
+                    <p class="mt-2 text-sm">Vivez un moment exclusif en pleine nature, avec un pique-nique haut de gamme préparé sur-mesure rien que pour vous.   </p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img6.jpeg" alt="Un Dîner Romantique" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Une Table d'Exception</h3>
+                    <p class="mt-2 text-sm">Dans un écrin de verdure au coeur d'Amboise, le Clos d'Amboise vous invite a vivre une expérience gastronomique. Cadre intimiste, parfait pour les dîners a deux.</p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img3.jpeg" alt="Déjeuner au Grand Jardin" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Douceur et Gourmandise</h3>
+                    <p class="mt-2 text-sm">Avec un brunch savoureux mêlant générosité, fraîcheur et élégance. Un moment de plaisir simple mais raffiné, l'équilibre parfait entre gourmandise et détente.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Activités -->
+        <section class="mt-24 md:mt-32">
+            <div class="text-center">
+                <h2 class="font-display-custom text-4xl text-custom-purple">Activités</h2>
+                <hr class="w-20 h-0.5 bg-custom-purple mx-auto my-5 border-0 rounded">
+            </div>
+            <div class="mt-12 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 gap-8">
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img9.jpeg" alt="Amboise" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Amboise</h3>
+                    <p class="mt-2 text-sm">L'un des plus majestueux châteaux de la Loire, un joyau d'architecture dominant la ville.</p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img13.jpeg" alt="Chenonceau" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Chenonceau</h3>
+                    <p class="mt-2 text-sm">Chef-d'œuvre de la Renaissance, le château des Dames est un site exceptionnel, par son architecture et son histoire.</p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img7.jpeg" alt="Le Vol en Montgolfière" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">La Belandre</h3>
+                    <p class="mt-2 text-sm">Croisière promenade de 50 minutes avec passage sous les arches du Château de Chenonceau. L’histoire du Château, la navigation sur le Cher, les barrages à aiguilles </p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img44.png" alt="Feu d'artifice" class="w-full h-64 object-cover object-bottom"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Fête Nationale</h3>
+                    <p class="mt-2 text-sm">Feu d'artifice grandiose tiré depuis les berges de la Loire.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section CTA -->
+        <section class="mt-24 md:mt-32">
+            <div class="mx-auto max-w-md text-center">
+                <div class="w-32 h-32 mx-auto overflow-hidden rounded-full card-shadow">
+                    <img class="w-full h-full object-cover image-zoom-hover" src="assets/img8.jpeg" alt="Voiture de luxe pour le séjour">
+                </div>
+                <h2 class="mt-8 font-display-custom text-4xl text-custom-purple">Le Séjour Signature</h2>
+                <p class="mt-2 text-lg text-slate-600">À partir de</p>
+                <p class="text-xl font-semibold text-slate-800">1200€ par personne</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer moderne -->
+    <footer class="bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                
+                <!-- Brand moderne -->
+                <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-plane text-white text-sm"></i>
+                        </div>
+                        <span class="text-amber-400 font-bold text-lg">Échappée Romantique</span>
+                    </div>
+                    
+                    <!-- Contact Info moderne -->
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm">
+                        <a href="tel:0766416354" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            07 66 41 63 54
+                        </a>
+                        <a href="mailto:echappeeromantique75@gmail.com" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span class="hidden sm:inline">echappeeromantique75@gmail.com</span>
+                            <span class="sm:hidden">Email</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Social et Copyright moderne -->
+                <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6">
+                    <a href="https://www.instagram.com/echappee_romantique.75?igsh=bjM1Y2x5bGwzdXgx" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="flex items-center text-slate-300 hover:text-pink-400 transition-colors text-sm">
+                        <i class="fab fa-instagram mr-2"></i>
+                        Rejoignez-nous sur Instagram
+                    </a>
+                    
+                    <p class="text-slate-400 text-xs">
+                        © 2024 <span class="text-amber-400">Échappée Romantique</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts etc. -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
+</html> 
