@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formule Découverte - Domaine de l'Arbrelle | Echappee-romantique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .font-display-custom {
+            font-family: 'Georgia', serif; /* Ou une autre police avec sérif élégante */
+            font-style: italic;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1',
+                        'secondary': '#8b5cf6',
+                        'accent': '#06b6d4',
+                        'neutral': '#374151',
+                        'custom-bg': '#fcfaf6'
+                    },
+                    fontFamily: {
+                        'display': ['Georgia', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-custom-bg font-body text-slate-700">
+    <!-- Navigation moderne -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-plane text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-bold text-slate-800 font-serif">Échappée-romantique</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#why-us" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
+                    <a href="index.html#directions" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
+                    <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Nos Échappées</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center text-white">
+        <div class="absolute inset-0 bg-black">
+            <img src="assets/img18.jpeg" alt="Vue panoramique d'Amboise au coucher du soleil" class="w-full h-full object-cover opacity-60">
+        </div>
+        <div class="relative z-10 p-4">
+            <div class="inline-flex items-center px-4 py-1.5 bg-emerald-500/90 text-white rounded-full text-sm font-medium mb-6">
+                <i class="fas fa-star mr-2"></i>Formule Populaire
+            </div>
+            <h1 class="font-display text-5xl md:text-7xl font-bold">Formule <span class="text-amber-300">Découverte</span></h1>
+            <p class="text-lg md:text-xl mt-4 max-w-2xl mx-auto">Une escapade romantique au cœur du Domaine de l'Arbrelle à Amboise</p>
+            <div class="mt-8 flex justify-center items-center gap-4">
+                <div class="bg-black/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <div class="text-2xl font-bold">750€</div>
+                    <div class="text-xs">par personne</div>
+                </div>
+                <div class="bg-black/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <div class="text-2xl font-bold">2 jours</div>
+                    <div class="text-xs">1 nuit</div>
+                </div>
+            </div>
+            <a href="#content" class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white animate-bounce"><i class="fas fa-chevron-down text-2xl"></i></a>
+        </div>
+    </section>
+
+    <main id="content" class="py-20 md:py-32">
+        <div class="max-w-4xl mx-auto px-6 space-y-24">
+
+            <!-- Card 1: Domaine -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="overflow-hidden rounded-2xl card-shadow">
+                    <img src="assets/img26.jpeg" alt="Gastronomie au Domaine de l'Arbrelle" class="w-full h-auto object-cover image-zoom-hover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="font-display-custom text-4xl text-amber-800/90">Domaine de l'arbrelle</h2>
+                    <hr class="w-20 h-0.5 bg-amber-300 mx-auto md:mx-0 my-5 border-0 rounded">
+                    <p>Au Domaine de l'Arbrelle, a deux pas d'Amboise, vivez une nuit d'exception dans un cadre paisible et raffiné. Une nuitée de charme avec petit déjeuner inclus, servie dans un cadre paisible et raffiné.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Nuitée -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="md:order-last overflow-hidden rounded-2xl card-shadow">
+                    <img src="assets/img20.jpeg" alt="Chambre de la nuitée" class="w-full h-auto object-cover image-zoom-hover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="font-display-custom text-4xl text-amber-800/90">La Nuitée</h2>
+                    <hr class="w-20 h-0.5 bg-amber-300 mx-auto md:mx-0 my-5 border-0 rounded">
+                    <p>Laissez-vous séduire par cette chambre de 20m2 alliant confort et raffinement, avec une vue apaisante, en gardant le ton élégant et séduisant, idéale pour une escapade a deux.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Liberté -->
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="overflow-hidden rounded-2xl card-shadow">
+                    <img src="assets/img32.jpeg" alt="Le Domaine de l'Arbrelle" class="w-full h-auto object-cover image-zoom-hover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="font-display-custom text-4xl text-amber-800/90">La Liberté</h2>
+                    <hr class="w-20 h-0.5 bg-amber-300 mx-auto md:mx-0 my-5 border-0 rounded">
+                    <p>Evasion complète à Amboise, en toute liberté, les plus beaux joyaux de la ville dont le majestueux Château Royal d'Amboise, le fascinant Clos Lucé, dernière demeure de Léonard de Vinci, L'élégant Château Gaillard, et bien d'autres merveilles locales... Avantages & réductions chez nos partenaires locaux (restaurants, boutiques, caves...)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-24">
+            <img src="assets/img30.jpeg" alt="Vue panoramique d'Amboise" class="w-full h-[600px] object-cover border rounded-2xl">
+        </div>
+
+        <!-- Section Repas -->
+        <section class="mt-24 md:mt-32">
+            <div class="text-center">
+                <h2 class="font-display-custom text-4xl text-amber-800/90">Repas</h2>
+                <hr class="w-20 h-0.5 bg-amber-300 mx-auto my-5 border-0 rounded">
+            </div>
+            <div class="mt-12 max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img10.jpeg" alt="Table Champêtre" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Table Champêtre</h3>
+                    <p class="mt-2 text-sm">Installez-vous à l'ombre d'un arbre, au bord du Loire, et savourez un moment de pure gourmandise en plein air.</p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img27.jpeg" alt="L'Ecluse" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">L'Ecluse</h3>
+                    <p class="mt-2 text-sm">Située en bord de Loire, a deux pas du centre historique, L'Ecluse est l'endroit idéal pour faire une pause hors du temps.</p>
+                </article>
+                <article class="text-center">
+                    <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img19.jpeg" alt="Fleur de Sel" class="w-full h-64 object-cover image-zoom-hover"></div>
+                    <h3 class="mt-6 font-display-custom text-2xl text-slate-800">Fleur de Sel</h3>
+                    <p class="mt-2 text-sm">A deux pas du célèbre château de Chenonceau, Fleur de Sel vous invite à un voyage culinaire raffiné dans un cadre chaleureux et authentique.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Activités -->
+        <section class="mt-24 md:mt-32">
+            <div class="text-center">
+                <h2 class="font-display-custom text-4xl text-amber-800/90">Activités</h2>
+                <hr class="w-20 h-0.5 bg-amber-300 mx-auto my-5 border-0 rounded">
+            </div>
+            <div class="mt-12 max-w-6xl mx-auto px-6 space-y-24">
+                <!-- Activité 1: Découverte avec galerie -->
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                    <div>
+                        <div class="overflow-hidden rounded-2xl card-shadow mb-4">
+                            <img id="main-activity-image" src="assets/img25.jpeg" alt="Activité principale" class="w-full h-auto object-cover transition-opacity duration-300">
+                        </div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <img src="assets/img25.jpeg" alt="Vieux pressoir" class="w-full h-24 object-cover rounded-lg cursor-pointer activity-thumbnail active-thumbnail">
+                            <img src="assets/img22.jpeg" alt="Château d'Amboise" class="w-full h-24 object-cover rounded-lg cursor-pointer activity-thumbnail">
+                            <img src="assets/img26.jpeg" alt="Jardins du domaine" class="w-full h-24 object-cover rounded-lg cursor-pointer activity-thumbnail">
+                            <img src="assets/img28.jpeg" alt="Vue sur Amboise" class="w-full h-24 object-cover rounded-lg cursor-pointer activity-thumbnail">
+                            <img src="assets/img36.jpeg" alt="appareil " class="w-full h-24 object-cover rounded-lg cursor-pointer activity-thumbnail">
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left pt-4">
+                        <h3 class="font-display-custom text-3xl text-slate-800">Découvert en autonomie ou en chauffeur privé</h3>
+                        <p class="mt-4 text-slate-600">Le Château Royal d'Amboise, le Clos Lucé, Le Château Gaillard et ses jardins, la Pagode de Chanteloup, le parc des mini-châteaux, l'aquarium de Touraine, le conservatoire de confiserie, La verrière d'art d'Amboise, le petit train d'Amboise, La location de velo.</p>
+                    </div>
+                </div>
+
+                <!-- Activité 2: Chenonceau -->
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div class="md:order-last overflow-hidden rounded-2xl card-shadow">
+                        <img src="assets/img24.jpeg" alt="Chenonceau" class="w-full h-auto object-cover image-zoom-hover">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="font-display-custom text-3xl text-slate-800">Chenonceau</h3>
+                        <p class="mt-4 text-slate-600">Surnommé le Château des Dames est l'un des plus emblématiques élégants châteaux de la Loire.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section CTA -->
+        <section class="mt-24 md:mt-32">
+            <div class="mx-auto max-w-md text-center">
+                <div class="w-32 h-32 mx-auto overflow-hidden rounded-full card-shadow">
+                    <img class="w-full h-full object-cover image-zoom-hover" src="assets/img8.jpeg" alt="Voiture de luxe pour le séjour">
+                </div>
+                <h2 class="mt-8 font-display-custom text-4xl text-amber-800/90">Découvert</h2>
+                <p class="mt-2 text-lg text-slate-600">À partir de</p>
+                <p class="text-xl font-semibold text-slate-800">750€ par personnes</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer moderne -->
+    <footer class="bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                
+                <!-- Brand moderne -->
+                <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-plane text-white text-sm"></i>
+                        </div>
+                        <span class="text-amber-400 font-bold text-lg">Échappée Romantique</span>
+                    </div>
+                    
+                    <!-- Contact Info moderne -->
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm">
+                        <a href="tel:0766416354" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            07 66 41 63 54
+                        </a>
+                        <a href="mailto:echappeeromantique75@gmail.com" class="text-slate-300 hover:text-amber-400 transition-colors flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span class="hidden sm:inline">echappeeromantique75@gmail.com</span>
+                            <span class="sm:hidden">Email</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Social et Copyright moderne -->
+                <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6">
+                    <a href="https://www.instagram.com/echappee_romantique.75?igsh=bjM1Y2x5bGwzdXgx" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="flex items-center text-slate-300 hover:text-pink-400 transition-colors text-sm">
+                        <i class="fab fa-instagram mr-2"></i>
+                        Rejoignez-nous sur Instagram
+                    </a>
+                    
+                    <p class="text-slate-400 text-xs">
+                        © 2024 <span class="text-amber-400">Échappée Romantique</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Lightbox, Scripts etc. -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainImage = document.getElementById('main-activity-image');
+            const thumbnails = document.querySelectorAll('.activity-thumbnail');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    // Change main image
+                    mainImage.style.opacity = '0';
+                    setTimeout(() => {
+                        mainImage.src = this.src;
+                        mainImage.alt = this.alt;
+                        mainImage.style.opacity = '1';
+                    }, 300);
+
+                    // Update active state
+                    thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+                    this.classList.add('active-thumbnail');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
