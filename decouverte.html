@@ -50,10 +50,25 @@
                     <span class="text-lg font-bold text-slate-800 font-serif">Échappée-romantique</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html#why-us" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
-                    <a href="index.html#directions" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
-                    <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Nos Échappées</a>
+                    <a href="signature.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
+                    <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
+                    <a href="decouverte.html" class="text-amber-600 font-semibold bg-amber-50 px-3 py-1 rounded-lg text-sm">Découverte</a>
                 </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-amber-600 p-2" aria-label="Ouvrir le menu mobile">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu mobile moderne -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-xl border-t border-slate-200/50">
+            <div class="px-4 py-3 space-y-2">
+                <a href="signature.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Signature</a>
+                <a href="echappees.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Récapitulatif</a>
+                <a href="decouverte.html" class="block px-3 py-2 text-amber-600 font-semibold bg-amber-50 rounded-lg text-sm">Découverte</a>
             </div>
         </div>
     </nav>
@@ -255,8 +270,8 @@
         </div>
     </footer>
 
-
     <!-- Lightbox, Scripts etc. -->
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mainImage = document.getElementById('main-activity-image');

@@ -63,11 +63,27 @@
                     <span class="text-lg font-bold text-slate-800 font-serif">Échappée-romantique</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="signature.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
-                    <a href="index.html#directions" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
+                    <a href="signature.html" class="text-amber-600 font-semibold bg-amber-50 px-3 py-1 rounded-lg text-sm">Signature</a>
+                    <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
                     <a href="decouverte.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Découverte</a>
                     <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Nos Échappées</a>
                 </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-amber-600 p-2" aria-label="Ouvrir le menu mobile">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu mobile moderne -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-xl border-t border-slate-200/50">
+            <div class="px-4 py-3 space-y-2">
+                <a href="signature.html" class="block px-3 py-2 text-amber-600 font-semibold bg-amber-50 rounded-lg text-sm">Signature</a>
+                <a href="echappees.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Récapitulatif</a>
+                <a href="decouverte.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Découverte</a>
+                <a href="echappees.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Nos Échappées</a>
             </div>
         </div>
     </nav>
@@ -183,7 +199,7 @@
                 <article class="text-center">
                     <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img7.jpeg" alt="Le Vol en Montgolfière" class="w-full h-64 object-cover image-zoom-hover"></div>
                     <h3 class="mt-6 font-display-custom text-2xl text-slate-800">La Belandre</h3>
-                    <p class="mt-2 text-sm">Croisière promenade de 50 minutes avec passage sous les arches du Château de Chenonceau. L’histoire du Château, la navigation sur le Cher, les barrages à aiguilles </p>
+                    <p class="mt-2 text-sm">Croisière promenade de 50 minutes avec passage sous les arches du Château de Chenonceau. L'histoire du Château, la navigation sur le Cher, les barrages à aiguilles </p>
                 </article>
                 <article class="text-center">
                     <div class="overflow-hidden rounded-2xl card-shadow"><img src="assets/img44.png" alt="Feu d'artifice" class="w-full h-64 object-cover object-bottom"></div>
@@ -253,6 +269,7 @@
     </footer>
 
     <!-- Scripts etc. -->
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scroll for anchor links
@@ -268,5 +285,4 @@
         });
     </script>
 </body>
-</html> 
 </html> 
