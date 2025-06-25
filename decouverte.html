@@ -3,7 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formule Découverte - Domaine de l'Arbrelle | Echappee-romantique</title>
+    <title>Échappée Romantique - Formule Découverte | Séjour Amboise 750€ | Chauffeur Privé</title>
+    <meta name="description" content="Séjour romantique de 2 jours au Domaine de l'Arbrelle à Amboise. Formule Découverte à partir de 750€ par personne avec visite des châteaux de la Loire, chambre raffinée et petit-déjeuner inclus.">
+    <meta name="keywords" content="séjour romantique Loire, weekend Amboise, château Loire, Domaine Arbrelle, échappée romantique, voyage couple Loire, chambre charme Amboise">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Échappée Romantique">
+    <link rel="canonical" href="https://echappee-romantique.com/decouverte.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://echappee-romantique.com/decouverte.html">
+    <meta property="og:title" content="Échappée Romantique - Formule Découverte | Séjour Amboise 750€">
+    <meta property="og:description" content="Séjour romantique de 2 jours au Domaine de l'Arbrelle à Amboise. Découvrez les châteaux de la Loire dans un cadre paisible et raffiné.">
+    <meta property="og:image" content="https://echappee-romantique.com/assets/img18.jpeg">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://echappee-romantique.com/decouverte.html">
+    <meta property="twitter:title" content="Échappée Romantique - Formule Découverte | Séjour Amboise 750€">
+    <meta property="twitter:description" content="Séjour romantique de 2 jours au Domaine de l'Arbrelle à Amboise. Découvrez les châteaux de la Loire dans un cadre paisible et raffiné.">
+    <meta property="twitter:image" content="https://echappee-romantique.com/assets/img18.jpeg">
+    
+    <!-- Géolocalisation -->
+    <meta name="geo.region" content="FR-37">
+    <meta name="geo.placename" content="Amboise, France">
+    <meta name="geo.position" content="47.4130;0.9828">
+    <meta name="ICBM" content="47.4130, 0.9828">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Cinzel:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -11,7 +41,7 @@
     <link href="style.css" rel="stylesheet">
     <style>
         .font-display-custom {
-            font-family: 'Georgia', serif; /* Ou une autre police avec sérif élégante */
+            font-family: 'Bodoni Moda', serif;
             font-style: italic;
         }
         .card-shadow {
@@ -22,16 +52,30 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontSize: {
+                        sm: '0.750rem',
+                        base: '1rem',
+                        xl: '1.333rem',
+                        '2xl': '1.777rem',
+                        '3xl': '2.369rem',
+                        '4xl': '3.158rem',
+                        '5xl': '4.210rem',
+                    },
+                    fontFamily: {
+                        heading: ['Bodoni Moda', 'serif'],
+                        body: ['Cinzel', 'serif'],
+                        'display': ['Bodoni Moda', 'serif'],
+                    },
+                    fontWeight: {
+                        normal: '400',
+                        bold: '700',
+                    },
                     colors: {
                         'primary': '#6366f1',
                         'secondary': '#8b5cf6',
                         'accent': '#06b6d4',
                         'neutral': '#374151',
                         'custom-bg': '#fcfaf6'
-                    },
-                    fontFamily: {
-                        'display': ['Georgia', 'serif'],
-                        'body': ['Inter', 'sans-serif']
                     }
                 }
             }
@@ -83,7 +127,7 @@
                 <i class="fas fa-star mr-2"></i>Formule Populaire
             </div>
             <h1 class="font-display text-5xl md:text-7xl font-bold">Formule <span class="text-amber-300">Découverte</span></h1>
-            <p class="text-lg md:text-xl mt-4 max-w-2xl mx-auto">Une escapade romantique au cœur du Domaine de l'Arbrelle à Amboise</p>
+            <p class="text-lg md:text-xl mt-4 max-w-2xl mx-auto">Séjour romantique de 2 jours au Domaine de l'Arbrelle à Amboise - Châteaux de la Loire</p>
             <div class="mt-8 flex justify-center items-center gap-4">
                 <div class="bg-black/20 backdrop-blur-sm rounded-lg px-6 py-3">
                     <div class="text-2xl font-bold">750€</div>
@@ -94,13 +138,22 @@
                     <div class="text-xs">1 nuit</div>
                 </div>
             </div>
-            <div class="absolute bottom-12 w-full flex justify-center">
-                <a href="#content" class="text-white animate-bounce">
-                    <i class="fas fa-chevron-down text-2xl"></i>
-                </a>
-            </div>
+
         </div>
     </section>
+
+    <!-- Fil d'Ariane pour le SEO -->
+    <nav aria-label="Fil d'Ariane" class="bg-slate-50 py-4 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ol class="flex items-center space-x-2 text-sm">
+                <li><a href="index.html" class="text-slate-600 hover:text-amber-600">Accueil</a></li>
+                <li class="text-slate-400">/</li>
+                <li><a href="echappees.html" class="text-slate-600 hover:text-amber-600">Nos Échappées</a></li>
+                <li class="text-slate-400">/</li>
+                <li class="text-amber-600 font-semibold">Formule Découverte</li>
+            </ol>
+        </div>
+    </nav>
 
     <main id="content" class="py-20 md:py-32">
         <div class="max-w-4xl mx-auto px-6 space-y-24">
@@ -108,7 +161,7 @@
             <!-- Card 1: Domaine -->
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="overflow-hidden rounded-2xl card-shadow">
-                    <img src="assets/img26.jpeg" alt="Gastronomie au Domaine de l'Arbrelle" class="w-full h-auto object-cover image-zoom-hover">
+                    <img src="assets/img26.jpeg" alt="Gastronomie raffinée Domaine de l'Arbrelle Amboise - Séjour romantique Loire" class="w-full h-auto object-cover image-zoom-hover">
                 </div>
                 <div class="text-center md:text-left">
                     <h2 class="font-display-custom text-4xl text-amber-800/90">Domaine de l'arbrelle</h2>
@@ -125,7 +178,7 @@
                 <div class="text-center md:text-left">
                     <h2 class="font-display-custom text-4xl text-amber-800/90">La Nuitée</h2>
                     <hr class="w-20 h-0.5 bg-amber-300 mx-auto md:mx-0 my-5 border-0 rounded">
-                    <p>Laissez-vous séduire par cette chambre de 20m2 alliant confort et raffinement, avec une vue apaisante, en gardant le ton élégant et séduisant, idéale pour une escapade a deux.</p>
+                    <p>Nichée dans un cadre paisible, dans une atmosphère raffinée et apaisante, une décoration de charme. Superficie de 27m², avec une belle vue sur le parc, coin salon, équipées d'un lit double literie haut de gamme. Dans ce cadre idyllique laissez-vous séduire par le confort discret et les attentions délicates qui rendent chaque séjour unique.</p>
                 </div>
             </div>
 
@@ -271,6 +324,62 @@
     </footer>
 
     <!-- Lightbox, Scripts etc. -->
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "name": "Formule Découverte - Domaine de l'Arbrelle",
+        "description": "Séjour romantique de 2 jours au Domaine de l'Arbrelle à Amboise avec visite des châteaux de la Loire",
+        "image": "https://echappee-romantique.com/assets/img18.jpeg",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Amboise",
+            "addressRegion": "Centre-Val de Loire",
+            "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "47.4130",
+            "longitude": "0.9828"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "750",
+            "priceCurrency": "EUR",
+            "description": "Séjour romantique 2 jours / 1 nuit au Domaine de l'Arbrelle",
+            "availability": "https://schema.org/InStock"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "Échappée-romantique",
+            "telephone": "+33766416354",
+            "email": "echappeeromantique75@gmail.com",
+            "url": "https://echappee-romantique.com"
+        },
+        "touristType": "Couples",
+        "amenityFeature": [
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Chambre raffinée",
+                "value": "20m² avec vue apaisante"
+            },
+            {
+                "@type": "LocationFeatureSpecification", 
+                "name": "Petit-déjeuner inclus",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Visite châteaux",
+                "value": "Château Royal d'Amboise, Clos Lucé, Château Gaillard"
+            }
+        ]
+    }
+    </script>
+
+    <script src="translations.js"></script>
+    <script src="language-config.js"></script>
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

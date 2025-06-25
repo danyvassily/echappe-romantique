@@ -5,35 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Échappée Romantique - Vols Privés & Séjours d'Exception pour Couples</title>
-    <meta name="description" content="Découvrez des expériences en voiture et  aériennes uniques et romantiques. Vols privés en Cessna vers des destinations d'exception pour couples en quête d'évasion. Réservez votre escapade romantique.">
-    <meta name="keywords" content="vol privé, escapade romantique, Cessna, voyage couple, expérience aérienne, séjour d'exception">
+    <title>Échappée Romantique - Séjours Romantiques Loire & Amboise | Chauffeur Privé</title>
+    <meta name="description" content="Séjours romantiques d'exception en vallée de la Loire avec chauffeur privé. Découvrez nos formules Découverte (750€) et Signature (1200€) à Amboise. Châteaux, spa, gastronomie pour couples.">
+    <meta name="keywords" content="séjour romantique Loire, chauffeur privé Amboise, weekend romantique château, échappée couple Loire, spa romantique, gastronomie Loire, Domaine Arbrelle, Clos Amboise">
     <meta name="author" content="Échappée Romantique">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://echappee-romantique.com/">
+    
+    <!-- Géolocalisation -->
+    <meta name="geo.region" content="FR-37">
+    <meta name="geo.placename" content="Amboise, Loire, France">
+    <meta name="geo.position" content="47.4130;0.9828">
+    <meta name="ICBM" content="47.4130, 0.9828">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://echappee-romantique.com/">
-    <meta property="og:title" content="Échappée Romantique - Vols Privés & Séjours d'Exception">
-    <meta property="og:description" content="Expériences aériennes uniques et romantiques pour couples. Vols privés en Cessna vers des destinations d'exception.">
-    <meta property="og:image" content="https://echappee-romantique.com/assets/logo.jpeg">
+    <meta property="og:title" content="Échappée Romantique - Séjours Romantiques Loire & Amboise">
+    <meta property="og:description" content="Séjours romantiques d'exception en vallée de la Loire avec chauffeur privé. Châteaux, spa, gastronomie pour couples à partir de 750€.">
+    <meta property="og:image" content="https://echappee-romantique.com/assets/img18.jpeg">
+    <meta property="og:locale" content="fr_FR">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://echappee-romantique.com/">
-    <meta property="twitter:title" content="Échappée Romantique - Vols Privés & Séjours d'Exception">
-    <meta property="twitter:description" content="Expériences aériennes uniques et romantiques pour couples. Vols privés en Cessna vers des destinations d'exception.">
-    <meta property="twitter:image" content="https://echappee-romantique.com/assets/logo.jpeg">
+    <meta property="twitter:title" content="Échappée Romantique - Séjours Romantiques Loire & Amboise">
+    <meta property="twitter:description" content="Séjours romantiques d'exception en vallée de la Loire avec chauffeur privé. Châteaux, spa, gastronomie pour couples à partir de 750€.">
+    <meta property="twitter:image" content="https://echappee-romantique.com/assets/img18.jpeg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/logo.jpeg">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Cinzel:wght@300;400;500;600;700&display=swap" as="style">
     <link rel="preload" href="assets/logo.jpeg" as="image">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Cinzel:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -46,6 +54,24 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontSize: {
+                        sm: '0.750rem',
+                        base: '1rem',
+                        xl: '1.333rem',
+                        '2xl': '1.777rem',
+                        '3xl': '2.369rem',
+                        '4xl': '3.158rem',
+                        '5xl': '4.210rem',
+                    },
+                    fontFamily: {
+                        heading: ['Bodoni Moda', 'serif'],
+                        body: ['Cinzel', 'serif'],
+                        'display': ['Bodoni Moda', 'serif'],
+                    },
+                    fontWeight: {
+                        normal: '400',
+                        bold: '700',
+                    },
                     colors: {
                         'primary': '#9DB17C',
                         'primary-dark': '#373D20',
@@ -54,10 +80,6 @@
                         'neutral': '#374151',
                         'romantic': '#fdf2f8',
                         'romantic-dark': '#fce7f3'
-                    },
-                    fontFamily: {
-                        'display': ['Playfair Display', 'serif'],
-                        'body': ['Inter', 'sans-serif']
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -91,7 +113,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cinzel', serif;
             line-height: 1.6;
             color: #374151;
             overflow-x: hidden;
@@ -122,22 +144,25 @@
             width: 100%;
         }
         
-        /* Effets de Ciel (Nuages) */
+        /* Effets de Ciel (Nuages) - Version Améliorée */
         .cloud {
             position: absolute;
             opacity: 0;
             will-change: transform, opacity;
             z-index: 5;
+            transition: opacity 0.3s ease;
         }
 
+        /* Nuages de base - plus visibles */
         .cloud-main {
             width: 200px;
             height: 60px;
-            background: rgba(243, 244, 246, 0.7); /* Gris clair visible */
+            background: rgba(200, 210, 220, 0.9); /* Gris plus foncé et plus opaque */
             border-radius: 100px;
-            filter: blur(12px);
+            filter: blur(8px);
             position: relative;
-            box-shadow: 0 0 30px rgba(243, 244, 246, 0.6);
+            box-shadow: 0 0 40px rgba(180, 190, 200, 0.8);
+            animation: cloudFloat 20s infinite linear;
         }
 
         .cloud-main::before,
@@ -164,6 +189,227 @@
             left: 40px;
         }
 
+        /* Nuages de taille moyenne */
+        .cloud-medium {
+            width: 150px;
+            height: 45px;
+            background: rgba(170, 180, 190, 0.8);
+            border-radius: 80px;
+            filter: blur(10px);
+            position: relative;
+            box-shadow: 0 0 35px rgba(160, 170, 180, 0.7);
+            animation: cloudFloat 25s infinite linear reverse;
+        }
+
+        .cloud-medium::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            top: -25px;
+            right: 25px;
+            background: inherit;
+            border-radius: inherit;
+            filter: inherit;
+            box-shadow: inherit;
+        }
+
+        .cloud-medium::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            top: -40px;
+            left: 30px;
+            background: inherit;
+            border-radius: inherit;
+            filter: inherit;
+            box-shadow: inherit;
+        }
+
+        /* Petits nuages */
+        .cloud-small {
+            width: 100px;
+            height: 30px;
+            background: rgba(190, 200, 210, 0.7);
+            border-radius: 60px;
+            filter: blur(6px);
+            position: relative;
+            box-shadow: 0 0 25px rgba(170, 180, 190, 0.6);
+            animation: cloudFloat 30s infinite linear;
+        }
+
+        .cloud-small::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 40px;
+            top: -15px;
+            right: 15px;
+            background: inherit;
+            border-radius: inherit;
+            filter: inherit;
+            box-shadow: inherit;
+        }
+
+        .cloud-small::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 50px;
+            top: -20px;
+            left: 20px;
+            background: inherit;
+            border-radius: inherit;
+            filter: inherit;
+            box-shadow: inherit;
+        }
+
+        /* Animation de flottement des nuages */
+        @keyframes cloudFloat {
+            0% {
+                transform: translateX(-100px) translateY(0px);
+            }
+            50% {
+                transform: translateX(50vw) translateY(-20px);
+            }
+            100% {
+                transform: translateX(100vw) translateY(0px);
+            }
+        }
+
+        /* Nuages avec des variations de couleur */
+        .cloud-variant-1 {
+            background: rgba(215, 225, 235, 0.85);
+            box-shadow: 0 0 45px rgba(195, 205, 215, 0.75);
+        }
+
+        .cloud-variant-2 {
+            background: rgba(204, 228, 251, 0.9);
+            box-shadow: 0 0 50px rgba(165, 175, 185, 0.8);
+        }
+
+        .cloud-variant-3 {
+            background: rgba(136, 188, 240, 0.8);
+            box-shadow: 0 0 40px rgba(185, 195, 205, 0.7);
+        }
+
+        /* Soleil - Style harmonieux avec les nuages */
+        .sun {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 120px;
+            height: 120px;
+            z-index: 6;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .sun-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, 
+                rgba(255, 235, 100, 0.9) 0%, 
+                rgba(255, 200, 50, 0.8) 40%, 
+                rgba(255, 165, 30, 0.7) 70%, 
+                rgba(255, 140, 20, 0.5) 100%);
+            border-radius: 50%;
+            filter: blur(2px);
+            box-shadow: 
+                0 0 30px rgba(255, 215, 70, 0.8),
+                0 0 60px rgba(255, 190, 40, 0.6),
+                inset 0 0 20px rgba(255, 245, 120, 0.9);
+            animation: sunPulse 4s ease-in-out infinite alternate;
+        }
+
+        .sun-ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: center;
+            width: 3px;
+            height: 25px;
+            background: linear-gradient(to top, 
+                rgba(255, 215, 70, 0.8) 0%, 
+                rgba(255, 235, 100, 0.9) 50%, 
+                rgba(255, 215, 70, 0.6) 100%);
+            border-radius: 2px;
+            filter: blur(1px);
+            box-shadow: 0 0 10px rgba(255, 215, 70, 0.7);
+        }
+
+        /* Rayons aux positions principales */
+        .sun-ray:nth-child(2) { transform: translate(-50%, -50%) rotate(0deg) translateY(-45px); }
+        .sun-ray:nth-child(3) { transform: translate(-50%, -50%) rotate(45deg) translateY(-45px); }
+        .sun-ray:nth-child(4) { transform: translate(-50%, -50%) rotate(90deg) translateY(-45px); }
+        .sun-ray:nth-child(5) { transform: translate(-50%, -50%) rotate(135deg) translateY(-45px); }
+        .sun-ray:nth-child(6) { transform: translate(-50%, -50%) rotate(180deg) translateY(-45px); }
+        .sun-ray:nth-child(7) { transform: translate(-50%, -50%) rotate(225deg) translateY(-45px); }
+        .sun-ray:nth-child(8) { transform: translate(-50%, -50%) rotate(270deg) translateY(-45px); }
+        .sun-ray:nth-child(9) { transform: translate(-50%, -50%) rotate(315deg) translateY(-45px); }
+
+        /* Rayons secondaires plus petits */
+        .sun-ray-small {
+            width: 2px;
+            height: 15px;
+            background: linear-gradient(to top, 
+                rgba(255, 225, 80, 0.6) 0%, 
+                rgba(255, 245, 120, 0.8) 50%, 
+                rgba(255, 225, 80, 0.4) 100%);
+            filter: blur(0.5px);
+        }
+
+        .sun-ray-small:nth-child(10) { transform: translate(-50%, -50%) rotate(22.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(11) { transform: translate(-50%, -50%) rotate(67.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(12) { transform: translate(-50%, -50%) rotate(112.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(13) { transform: translate(-50%, -50%) rotate(157.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(14) { transform: translate(-50%, -50%) rotate(202.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(15) { transform: translate(-50%, -50%) rotate(247.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(16) { transform: translate(-50%, -50%) rotate(292.5deg) translateY(-40px); }
+        .sun-ray-small:nth-child(17) { transform: translate(-50%, -50%) rotate(337.5deg) translateY(-40px); }
+
+        /* Animations du soleil */
+        @keyframes sunPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 
+                    0 0 30px rgba(255, 215, 70, 0.8),
+                    0 0 60px rgba(255, 190, 40, 0.6),
+                    inset 0 0 20px rgba(255, 245, 120, 0.9);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1);
+                box-shadow: 
+                    0 0 40px rgba(255, 215, 70, 0.9),
+                    0 0 80px rgba(255, 190, 40, 0.7),
+                    inset 0 0 25px rgba(255, 245, 120, 1);
+            }
+        }
+
+        @keyframes sunRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Animation de rotation des rayons */
+        .sun-rays-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: sunRotate 60s linear infinite;
+        }
+
         /* Mobile menu animations */
         #mobile-menu {
             transform: translateY(-100%);
@@ -173,6 +419,8 @@
         #mobile-menu.active {
             transform: translateY(0);
         }
+        
+
     </style>
     
     <!-- Structured Data -->
@@ -181,19 +429,52 @@
         "@context": "https://schema.org",
         "@type": "TravelAgency",
         "name": "Échappée Romantique",
-        "description": "Expériences aériennes uniques et romantiques pour couples",
+        "description": "Séjours romantiques d'exception en vallée de la Loire avec chauffeur privé pour couples",
         "url": "https://echappee-romantique.com",
         "logo": "https://echappee-romantique.com/assets/logo.jpeg",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+33-7-66-41-63-54",
             "contactType": "customer service",
-            "email": "echappeeromantique75@gmail.com"
+            "email": "echappeeromantique75@gmail.com",
+            "availableLanguage": ["French"]
         },
         "address": {
             "@type": "PostalAddress",
+            "addressLocality": "Amboise",
+            "addressRegion": "Centre-Val de Loire",
             "addressCountry": "FR"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "47.4130",
+            "longitude": "0.9828"
+        },
+        "serviceArea": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "47.4130",
+                "longitude": "0.9828"
+            },
+            "geoRadius": "50000"
+        },
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "name": "Formule Découverte",
+                "description": "Séjour romantique 2 jours au Domaine de l'Arbrelle",
+                "price": "750",
+                "priceCurrency": "EUR"
+            },
+            {
+                "@type": "Offer",
+                "name": "Séjour Signature",
+                "description": "Séjour premium au Clos d'Amboise avec spa",
+                "price": "1200",
+                "priceCurrency": "EUR"
+            }
+        ],
         "sameAs": [
             "https://www.instagram.com/echappee_romantique.75"
         ]
@@ -212,29 +493,32 @@
                             <i class="fas fa-plane text-white text-lg"></i>
                         </div>
                         <div class="text-left">
-                            <div class="text-xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">
+                            <div class="text-xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors" data-translate="nav-title">
                                 Échappée
                             </div>
-                            <div class="text-sm font-medium text-gray-600 -mt-1">Romantique</div>
+                            <div class="text-sm font-medium text-gray-600 -mt-1" data-translate="nav-subtitle">Romantique</div>
                         </div>
                     </div>
                 </a>
                 
                 <!-- Navigation Desktop -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="signature.html" class="nav-link text-gray-700 hover:text-primary font-medium transition-all duration-300 relative group">
+                    <a href="signature.html" class="nav-link text-gray-700 hover:text-primary font-medium transition-all duration-300 relative group" data-translate="nav-signature">
                         Signature
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="echappees.html" class="nav-link text-gray-700 hover:text-primary font-medium transition-all duration-300 relative group">
+                    <a href="echappees.html" class="nav-link text-gray-700 hover:text-primary font-medium transition-all duration-300 relative group" data-translate="nav-echappees">
                         Nos Échappées
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="decouverte.html" class="nav-link text-gray-700 hover:text-primary font-medium transition-all duration-300 relative group">
+                    <a href="decouverte.html" class="nav-link text-gray-700 hover:text-primary font-medium transition-all duration-300 relative group" data-translate="nav-decouverte">
                         Découverte
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="echappees.html" class="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    
+
+                    
+                    <a href="echappees.html" class="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-translate="nav-reserve">
                         Réserver
                     </a>
                 </div>
@@ -251,10 +535,13 @@
         <!-- Menu Mobile Overlay -->
         <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-lg border-t border-gray-100">
             <div class="px-4 py-6 space-y-4">
-                <a href="signature.html" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Signature</a>
-                <a href="echappees.html" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Nos Échappées</a>
-                <a href="decouverte.html" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Découverte</a>
-                <a href="echappees.html" class="block bg-primary text-white font-semibold py-3 px-6 rounded-xl text-center mt-4">Réserver</a>
+                <a href="signature.html" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors" data-translate="nav-signature">Signature</a>
+                <a href="echappees.html" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors" data-translate="nav-echappees">Nos Échappées</a>
+                <a href="decouverte.html" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors" data-translate="nav-decouverte">Découverte</a>
+                
+
+                
+                <a href="echappees.html" class="block bg-primary text-white font-semibold py-3 px-6 rounded-xl text-center mt-4" data-translate="nav-reserve">Réserver</a>
             </div>
         </div>
     </nav>
@@ -274,25 +561,25 @@
         <!-- Logo animé -->
         <div id="hero-logo" class="relative z-10 mb-8">
             <div class="relative">
-                <img src="assets/logo.jpeg" alt="Échappée Romantique" class="h-32 w-auto sm:h-40 lg:h-48 rounded-full object-cover shadow-lg border-4 border-white">
+                <img src="assets/logo.jpeg" alt="Échappée Romantique - Séjours romantiques chauffeur privé Loire Amboise" class="h-32 w-auto sm:h-40 lg:h-48 rounded-full object-cover shadow-lg border-4 border-white">
             </div>
         </div>
         
         <!-- Contenu principal -->
         <div id="hero-content" class="relative z-10 text-center max-w-6xl mx-auto">
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-gray-900 mb-6 leading-tight">
-                Une <span class="text-primary">Échappée</span> Romantique
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-gray-900 mb-6 leading-tight" data-translate="hero-title">
+                <span class="text-primary">Échappée</span> Romantique
             </h1>
-            <p class="text-xl sm:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-                Découvrez des expériences avec chauffeur privé, pour des séjours d'exception.
+            <p class="text-xl sm:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed font-light" data-translate="hero-subtitle">
+                Séjours romantiques d'exception en vallée de la Loire avec chauffeur privé - Châteaux, spa et gastronomie
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="echappees.html" class="group bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2">
-                    <span>Découvrir nos escapades</span>
+                    <span data-translate="hero-cta1">Découvrir nos escapades</span>
                     <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 <a href="#about" class="group border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center space-x-2">
-                    <span>En savoir plus</span>
+                    <span data-translate="hero-cta2">En savoir plus</span>
                     <i class="fas fa-chevron-down group-hover:translate-y-1 transition-transform"></i>
                 </a>
             </div>
@@ -300,7 +587,7 @@
         
         <!-- Avion Cessna -->
         <div class="relative z-10 w-full max-w-4xl mx-auto mt-12">
-            <img id="cessna-plane" src="assets/cesna.png" alt="Avion Cessna privé" class="w-full h-auto object-contain drop-shadow-2xl">
+            <img id="cessna-plane" src="assets/cesna.png" alt="Transport premium chauffeur privé - Échappée romantique Loire" class="w-full h-auto object-contain drop-shadow-2xl">
         </div>
         
         <!-- Scroll Indicator -->
@@ -316,19 +603,19 @@
         <div class="absolute inset-0 bg-gradient-to-br from-romantic/30 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-6">
+                <h2 class="text-4xl sm:text-5xl font-display font-bold text-gray-900 mb-6" data-translate="about-title">
                     Notre <span class="text-primary">Passion</span> vous faire plaisir
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Créateurs d'expériences avec chauffeur privé uniques et romantiques pour couples en quête d'originalité
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-translate="about-subtitle">
+                    Créateurs de séjours romantiques uniques en vallée de la Loire avec chauffeur privé pour couples en quête d'exception
                 </p>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-6">
                     <div class="bg-gradient-to-r from-primary/10 to-secondary/10 p-8 rounded-2xl border border-primary/20">
-                        <h3 class="text-2xl font-display font-semibold text-gray-900 mb-4">Notre Histoire</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <h3 class="text-2xl font-display font-semibold text-gray-900 mb-4" data-translate="about-histoire-title">Notre Histoire</h3>
+                        <p class="text-gray-600 leading-relaxed" data-translate="about-histoire-text">
                             Fondée par un passionné d'aviation, Échappée Romantique est née de la volonté de créer des moments inoubliables en alliant le charme des vols privés à des séjours dans des lieux d'exception.
                         </p>
                     </div>
@@ -353,7 +640,7 @@
                 </div>
                 
                 <div class="relative">
-                    <img src="assets/img18.jpeg" alt="Château romantique" class="rounded-2xl shadow-2xl w-full h-auto object-cover">
+                    <img src="assets/img18.jpeg" alt="Château romantique Amboise Loire - Séjour d'exception couple" class="rounded-2xl shadow-2xl w-full h-auto object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <div class="bg-white/90 backdrop-blur-sm rounded-xl p-4">
@@ -445,6 +732,8 @@
         </div>
     </footer>
 
+    <script src="translations.js"></script>
+    <script src="language-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

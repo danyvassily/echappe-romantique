@@ -3,7 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Échappées - Echappee-romantique</title>
+    <title>Échappée Romantique - Nos Séjours Loire | Découverte & Signature | Chauffeur Privé</title>
+    <meta name="description" content="2 formules de séjours romantiques en vallée de la Loire avec chauffeur privé : Découverte (750€) au Domaine de l'Arbrelle et Signature (1200€) au Clos d'Amboise. Châteaux, spa, gastronomie.">
+    <meta name="keywords" content="échappées romantiques Loire, séjour couple Amboise, formule découverte signature, chauffeur privé château, spa romantique Loire, weekend luxe Amboise">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Échappée Romantique">
+    <link rel="canonical" href="https://echappee-romantique.com/echappees.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://echappee-romantique.com/echappees.html">
+    <meta property="og:title" content="Échappée Romantique - Nos Séjours Loire | Découverte & Signature">
+    <meta property="og:description" content="2 formules de séjours romantiques en vallée de la Loire : Découverte (750€) et Signature (1200€). Châteaux, spa, gastronomie avec chauffeur privé.">
+    <meta property="og:image" content="https://echappee-romantique.com/assets/img8.jpeg">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://echappee-romantique.com/echappees.html">
+    <meta property="twitter:title" content="Échappée Romantique - Nos Séjours Loire | Découverte & Signature">
+    <meta property="twitter:description" content="2 formules de séjours romantiques en vallée de la Loire : Découverte (750€) et Signature (1200€). Châteaux, spa, gastronomie avec chauffeur privé.">
+    <meta property="twitter:image" content="https://echappee-romantique.com/assets/img8.jpeg">
+    
+    <!-- Géolocalisation -->
+    <meta name="geo.region" content="FR-37">
+    <meta name="geo.placename" content="Amboise, Loire, France">
+    <meta name="geo.position" content="47.4130;0.9828">
+    <meta name="ICBM" content="47.4130, 0.9828">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Cinzel:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -13,15 +43,29 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontSize: {
+                        sm: '0.750rem',
+                        base: '1rem',
+                        xl: '1.333rem',
+                        '2xl': '1.777rem',
+                        '3xl': '2.369rem',
+                        '4xl': '3.158rem',
+                        '5xl': '4.210rem',
+                    },
+                    fontFamily: {
+                        heading: ['Bodoni Moda', 'serif'],
+                        body: ['Cinzel', 'serif'],
+                        'display': ['Bodoni Moda', 'serif'],
+                    },
+                    fontWeight: {
+                        normal: '400',
+                        bold: '700',
+                    },
                     colors: {
                         'primary': '#6366f1',
                         'secondary': '#8b5cf6',
                         'accent': '#06b6d4',
                         'neutral': '#374151'
-                    },
-                    fontFamily: {
-                        'display': ['Georgia', 'serif'],
-                        'body': ['Inter', 'sans-serif']
                     }
                 }
             }
@@ -67,8 +111,19 @@
         </div>
     </nav>
 
+    <!-- Fil d'Ariane pour le SEO -->
+    <nav aria-label="Fil d'Ariane" class="bg-slate-50 py-4 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ol class="flex items-center space-x-2 text-sm">
+                <li><a href="index.html" class="text-slate-600 hover:text-amber-600">Accueil</a></li>
+                <li class="text-slate-400">/</li>
+                <li class="text-amber-600 font-semibold">Nos Échappées</li>
+            </ol>
+        </div>
+    </nav>
+
     <!-- Hero Section moderne -->
-    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-slate-100 overflow-hidden pt-16">
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-slate-100 overflow-hidden pt-8">
         <!-- Background décoratif -->
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(251,191,36,0.1),transparent_50%)]"></div>
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.05),transparent_50%)]"></div>
@@ -84,13 +139,13 @@
             
             <!-- Sous-titre -->
             <p class="text-xl sm:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Découvrez nos formules uniques pour des moments inoubliables à deux dans la vallée de la Loire
+                2 formules de séjours romantiques avec chauffeur privé en vallée de la Loire - Châteaux, spa et gastronomie d'exception
             </p>
             
             <!-- Image centrale moderne -->
             <div class="relative mb-16">
                 <div class="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
-                <img src="assets/img8.jpeg" alt="Amboise" class="relative w-full max-w-2xl mx-auto h-64 sm:h-80 lg:h-96 object-cover rounded-2xl shadow-2xl">
+                <img src="assets/img8.jpeg" alt="Château d'Amboise vallée de la Loire - Séjours romantiques d'exception" class="relative w-full max-w-2xl mx-auto h-64 sm:h-80 lg:h-96 object-cover rounded-2xl shadow-2xl">
             </div>
         </div>
     </section>
@@ -108,7 +163,7 @@
                     Choisissez votre échappée
                 </h2>
                 <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                    Deux expériences uniques alliant luxe, romance et découverte dans les airs et sur terre
+                    Deux expériences romantiques uniques alliant luxe, romance et découverte des châteaux de la Loire avec chauffeur privé
                 </p>
             </div>
 
@@ -118,7 +173,7 @@
                 <div class="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200/50">
                     <!-- Image avec overlay moderne -->
                     <div class="relative h-80 overflow-hidden">
-                        <img src="assets/img18.jpeg" alt="Domaine de l'Arbrelle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="assets/img18.jpeg" alt="Domaine de l'Arbrelle Amboise - Formule Découverte séjour romantique 750€" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                         
                         <!-- Badge moderne -->
@@ -183,7 +238,7 @@
                 <div class="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200/50">
                     <!-- Image avec overlay moderne -->
                     <div class="relative h-80 overflow-hidden">
-                        <img src="assets/img40.png" alt="Le Clos d'Amboise" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="assets/img40.png" alt="Le Clos d'Amboise - Séjour Signature premium spa gastronomie 1200€" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                         
                         <!-- Badge moderne -->
@@ -888,8 +943,66 @@
         </div>
     </footer>
 
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Nos Échappées Romantiques Loire",
+        "description": "Collection de séjours romantiques en vallée de la Loire avec chauffeur privé",
+        "url": "https://echappee-romantique.com/echappees.html",
+        "mainEntity": [
+            {
+                "@type": "TouristAttraction",
+                "name": "Formule Découverte - Domaine de l'Arbrelle",
+                "description": "Séjour romantique 2 jours au Domaine de l'Arbrelle à Amboise",
+                "image": "https://echappee-romantique.com/assets/img18.jpeg",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "750",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Amboise",
+                    "addressRegion": "Centre-Val de Loire",
+                    "addressCountry": "FR"
+                }
+            },
+            {
+                "@type": "TouristAttraction",
+                "name": "Séjour Signature - Le Clos d'Amboise",
+                "description": "Séjour romantique premium avec spa et gastronomie",
+                "image": "https://echappee-romantique.com/assets/img40.png",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "1200",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Amboise",
+                    "addressRegion": "Centre-Val de Loire",
+                    "addressCountry": "FR"
+                }
+            }
+        ],
+        "provider": {
+            "@type": "Organization",
+            "name": "Échappée-romantique",
+            "telephone": "+33766416354",
+            "email": "echappeeromantique75@gmail.com",
+            "url": "https://echappee-romantique.com"
+        }
+    }
+    </script>
+
     <!-- EmailJS pour l'envoi d'emails -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="translations.js"></script>
+    <script src="language-config.js"></script>
     <script src="script.js"></script>
     <script src="echappees-animations.js"></script>
     <script src="reservation-form.js"></script>

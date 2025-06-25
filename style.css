@@ -8,6 +8,23 @@
     transform: translateY(0);
 }
 
+/* Styles typographiques */
+body {
+    font-family: 'Cinzel', serif;
+}
+
+.font-heading {
+    font-family: 'Bodoni Moda', serif;
+}
+
+.font-body {
+    font-family: 'Cinzel', serif;
+}
+
+.font-display {
+    font-family: 'Bodoni Moda', serif;
+}
+
 /* Styles pour les images avec zoom au hover */
 .image-zoom-hover {
     transition: transform 0.3s ease-in-out;

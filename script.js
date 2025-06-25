@@ -113,53 +113,219 @@ function initializeAnimations() {
     delay: 2,
   });
 
-  // Création et animation des nuages
+  // Création et animation des nuages améliorés
   const skyEffectsContainer = document.getElementById("sky-effects");
   if (skyEffectsContainer) {
-    const cloudCount = 7;
-    for (let i = 0; i < cloudCount; i++) {
-      const cloud = document.createElement("div");
-      cloud.classList.add("cloud");
-      const cloudMain = document.createElement("div");
-      cloudMain.classList.add("cloud-main");
-      cloud.appendChild(cloudMain);
-      skyEffectsContainer.appendChild(cloud);
+    const cloudConfigs = [
+      // Grands nuages principaux
+      {
+        count: 4,
+        type: "cloud-main",
+        variants: ["cloud-variant-1", "cloud-variant-2", "cloud-variant-3"],
+      },
+      // Nuages moyens
+      {
+        count: 6,
+        type: "cloud-medium",
+        variants: ["cloud-variant-1", "cloud-variant-2"],
+      },
+      // Petits nuages
+      {
+        count: 8,
+        type: "cloud-small",
+        variants: ["cloud-variant-1", "cloud-variant-3"],
+      },
+    ];
 
-      const animateCloud = () => {
-        const duration = gsap.utils.random(25, 40);
-        const startY = gsap.utils.random(5, 70); // %
-        const startX = 110; // start off-screen
-        const endX = -30; // end off-screen
-        const scale = gsap.utils.random(0.4, 1.3);
-        const rotation = gsap.utils.random(-4, 4);
+    cloudConfigs.forEach((config) => {
+      for (let i = 0; i < config.count; i++) {
+        const cloud = document.createElement("div");
+        cloud.classList.add("cloud");
 
-        gsap.set(cloud, {
-          top: `${startY}%`,
-          xPercent: startX * 10,
-          scale: scale,
-        });
+        const cloudElement = document.createElement("div");
+        cloudElement.classList.add(config.type);
 
-        gsap.to(cloud, {
-          xPercent: endX * 10,
-          rotation: rotation,
-          duration: duration,
-          ease: "none",
-          onStart: () => {
-            gsap.to(cloud, { opacity: 1, duration: 2 });
-          },
-          onComplete: () => {
-            gsap.to(cloud, {
-              opacity: 0,
-              duration: 2,
-              onComplete: animateCloud,
-            });
-          },
-        });
-      };
+        // Ajouter une variation de couleur aléatoire
+        if (config.variants && Math.random() > 0.4) {
+          const randomVariant =
+            config.variants[Math.floor(Math.random() * config.variants.length)];
+          cloudElement.classList.add(randomVariant);
+        }
 
-      setTimeout(animateCloud, gsap.utils.random(0, 15) * 1000);
+        cloud.appendChild(cloudElement);
+        skyEffectsContainer.appendChild(cloud);
+
+        const animateCloud = () => {
+          // Durées différentes selon le type de nuage
+          let duration;
+          switch (config.type) {
+            case "cloud-main":
+              duration = gsap.utils.random(20, 35);
+              break;
+            case "cloud-medium":
+              duration = gsap.utils.random(25, 40);
+              break;
+            case "cloud-small":
+              duration = gsap.utils.random(30, 45);
+              break;
+            default:
+              duration = gsap.utils.random(25, 40);
+          }
+
+          const startY = gsap.utils.random(5, 75); // %
+          const startX = Math.random() > 0.5 ? 110 : -30; // Direction aléatoire
+          const endX = startX > 0 ? -30 : 110;
+          const scale = gsap.utils.random(0.5, 1.4);
+          const rotation = gsap.utils.random(-6, 6);
+          const yMovement = gsap.utils.random(-15, 15);
+
+          gsap.set(cloud, {
+            top: `${startY}%`,
+            xPercent: startX * 10,
+            scale: scale,
+          });
+
+          gsap.to(cloud, {
+            xPercent: endX * 10,
+            y: yMovement,
+            rotation: rotation,
+            duration: duration,
+            ease: "none",
+            onStart: () => {
+              gsap.to(cloud, {
+                opacity: gsap.utils.random(0.6, 0.9),
+                duration: 2.5,
+                ease: "power2.out",
+              });
+            },
+            onComplete: () => {
+              gsap.to(cloud, {
+                opacity: 0,
+                duration: 2,
+                ease: "power2.in",
+                onComplete: animateCloud,
+              });
+            },
+          });
+        };
+
+        // Délai de démarrage aléatoire étalé sur 20 secondes
+        setTimeout(animateCloud, gsap.utils.random(0, 20) * 1000);
+      }
+    });
+
+    // Ajouter quelques nuages statiques en arrière-plan pour plus de profondeur
+    const staticClouds = 3;
+    for (let i = 0; i < staticClouds; i++) {
+      const staticCloud = document.createElement("div");
+      staticCloud.classList.add("cloud");
+
+      const staticCloudElement = document.createElement("div");
+      staticCloudElement.classList.add("cloud-medium");
+      staticCloudElement.style.opacity = "0.3";
+      staticCloudElement.style.filter = "blur(15px)";
+
+      staticCloud.appendChild(staticCloudElement);
+      skyEffectsContainer.appendChild(staticCloud);
+
+      gsap.set(staticCloud, {
+        top: `${gsap.utils.random(10, 60)}%`,
+        left: `${gsap.utils.random(10, 80)}%`,
+        scale: gsap.utils.random(0.8, 1.5),
+        opacity: gsap.utils.random(0.2, 0.4),
+      });
+
+      // Léger mouvement de balancement
+      gsap.to(staticCloud, {
+        x: "+=20",
+        y: "+=10",
+        rotation: "+=3",
+        duration: gsap.utils.random(15, 25),
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
     }
+
+    // Création du soleil animé
+    createAnimatedSun(skyEffectsContainer);
   }
+}
+
+// Fonction pour créer le soleil animé
+function createAnimatedSun(container) {
+  const sun = document.createElement("div");
+  sun.classList.add("sun");
+
+  // Conteneur pour les rayons qui tournent
+  const raysContainer = document.createElement("div");
+  raysContainer.classList.add("sun-rays-container");
+
+  // Créer les rayons principaux (8 rayons)
+  for (let i = 0; i < 8; i++) {
+    const ray = document.createElement("div");
+    ray.classList.add("sun-ray");
+    raysContainer.appendChild(ray);
+  }
+
+  // Créer les rayons secondaires plus petits (8 rayons)
+  for (let i = 0; i < 8; i++) {
+    const raySmall = document.createElement("div");
+    raySmall.classList.add("sun-ray", "sun-ray-small");
+    raysContainer.appendChild(raySmall);
+  }
+
+  // Créer le cœur du soleil
+  const sunCore = document.createElement("div");
+  sunCore.classList.add("sun-core");
+
+  // Assembler le soleil
+  sun.appendChild(raysContainer);
+  sun.appendChild(sunCore);
+  container.appendChild(sun);
+
+  // Animation d'apparition du soleil
+  gsap.fromTo(
+    sun,
+    {
+      opacity: 0,
+      scale: 0.5,
+      y: -30,
+    },
+    {
+      opacity: 0.9,
+      scale: 1,
+      y: 0,
+      duration: 3,
+      ease: "power2.out",
+      delay: 1.5,
+    }
+  );
+
+  // Animation de léger balancement du soleil entier
+  gsap.to(sun, {
+    y: "+=15",
+    x: "+=8",
+    duration: 8,
+    ease: "sine.inOut",
+    repeat: -1,
+    yoyo: true,
+    delay: 4,
+  });
+
+  // Animation de scintillement des rayons
+  const rays = sun.querySelectorAll(".sun-ray");
+  rays.forEach((ray, index) => {
+    gsap.to(ray, {
+      opacity: gsap.utils.random(0.6, 1),
+      scaleY: gsap.utils.random(0.8, 1.2),
+      duration: gsap.utils.random(2, 4),
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      delay: gsap.utils.random(0, 2),
+    });
+  });
 }
 
 // Initialisation de la navigation
@@ -330,3 +496,55 @@ window
       document.body.classList.remove("dark-mode");
     }
   });
+
+// Gestion des langues
+function updateActiveLanguageButton() {
+  if (typeof getCurrentLanguage !== "function") return;
+
+  const currentLang = getCurrentLanguage();
+  const languageButtons = document.querySelectorAll(".language-btn");
+
+  languageButtons.forEach((btn) => {
+    btn.classList.remove("active");
+    const btnOnclick = btn.getAttribute("onclick");
+    if (btnOnclick) {
+      const match = btnOnclick.match(/'(\w+)'/);
+      if (match && match[1] === currentLang) {
+        btn.classList.add("active");
+      }
+    }
+  });
+}
+
+// Redéfinir la fonction changeLanguage globale
+window.changeLanguage = function (language) {
+  localStorage.setItem("selectedLanguage", language);
+  if (typeof translatePage === "function") {
+    translatePage();
+  }
+  updateActiveLanguageButton();
+
+  // Animation lors du changement de langue
+  const elements = document.querySelectorAll("[data-translate]");
+  gsap.fromTo(
+    elements,
+    { opacity: 0.7 },
+    {
+      opacity: 1,
+      duration: 0.3,
+      stagger: 0.02,
+      ease: "power2.out",
+    }
+  );
+};
+
+// Initialiser les langues au chargement
+document.addEventListener("DOMContentLoaded", function () {
+  // Attendre que le fichier translations.js soit chargé
+  setTimeout(() => {
+    if (typeof translatePage === "function") {
+      translatePage();
+      updateActiveLanguageButton();
+    }
+  }, 100);
+});
