@@ -507,20 +507,304 @@
         </div>
     </section>
 
+    <!-- Section Formulaire de Réservation -->
+    <section id="reservation-section" class="py-24 bg-gradient-to-br from-slate-50 to-amber-50/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- En-tête de section -->
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-6">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    Réservation en ligne
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-display font-bold text-slate-800 mb-6">
+                    Réservez votre échappée
+                </h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                    Planifiez votre séjour romantique en quelques étapes simples
+                </p>
+            </div>
 
+            <!-- Conteneur du formulaire -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Indicateurs d'étapes -->
+                <div class="mb-12">
+                    <div class="flex items-center justify-center space-x-8">
+                        <div class="flex items-center space-x-2 step-indicator active" data-step="1">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300">1</div>
+                            <span class="hidden sm:block font-medium transition-all duration-300">Type de séjour</span>
+                        </div>
+                        <div class="w-8 h-1 bg-slate-200 rounded"></div>
+                        <div class="flex items-center space-x-2 step-indicator" data-step="2">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300">2</div>
+                            <span class="hidden sm:block font-medium transition-all duration-300">Voyageurs</span>
+                        </div>
+                        <div class="w-8 h-1 bg-slate-200 rounded"></div>
+                        <div class="flex items-center space-x-2 step-indicator" data-step="3">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300">3</div>
+                            <span class="hidden sm:block font-medium transition-all duration-300">Dates</span>
+                        </div>
+                        <div class="w-8 h-1 bg-slate-200 rounded"></div>
+                        <div class="flex items-center space-x-2 step-indicator" data-step="4">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300">4</div>
+                            <span class="hidden sm:block font-medium transition-all duration-300">Récapitulatif</span>
+                        </div>
+                    </div>
+                </div>
 
-           
-            
-            <!-- Boutons d'action modernes -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:0766416354" class="inline-flex items-center justify-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <i class="fas fa-phone mr-2"></i>
-                    Réserver maintenant
-                </a>
-                <a href="index.html" class="inline-flex items-center justify-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    Retour à l'accueil
-                </a>
+                <!-- Formulaire principal -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    
+                    <!-- Étape 1: Choix du séjour -->
+                    <div id="step-1" class="form-step active p-8">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-display font-light text-slate-800 mb-4">
+                                Quel type de séjour souhaitez-vous ?
+                            </h3>
+                            <p class="text-slate-600">Choisissez la formule qui vous correspond</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                            <!-- Option Découverte -->
+                            <div class="stay-option cursor-pointer rounded-2xl border-2 border-transparent p-8 transition-all duration-300 hover:shadow-lg" 
+                                 data-type="decouverte" data-price="750">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <i class="fas fa-star text-amber-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-slate-800 mb-3">Échappée Découverte</h4>
+                                    <p class="text-slate-600 mb-4">Séjour court pour découvrir la vallée de la Loire</p>
+                                    <div class="text-amber-600 font-bold text-xl">750€ par personne</div>
+                                    
+                                    <!-- Points forts -->
+                                    <div class="mt-6 space-y-2 text-sm text-slate-600">
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-check text-amber-600 mr-2"></i>
+                                            Domaine de l'Arbrelle
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-check text-amber-600 mr-2"></i>
+                                            Château d'Amboise inclus
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-check text-amber-600 mr-2"></i>
+                                            Petit-déjeuner inclus
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Option Signature -->
+                            <div class="stay-option cursor-pointer rounded-2xl border-2 border-transparent p-8 transition-all duration-300 hover:shadow-lg" 
+                                 data-type="signature" data-price="1200">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <i class="fas fa-heart text-pink-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-slate-800 mb-3">Séjour Signature</h4>
+                                    <p class="text-slate-600 mb-4">Expérience premium avec services exclusifs</p>
+                                    <div class="text-pink-600 font-bold text-xl">1200€ par personne</div>
+                                    
+                                    <!-- Points forts -->
+                                    <div class="mt-6 space-y-2 text-sm text-slate-600">
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                                            Le Clos d'Amboise
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                                            Spa & Massage duo
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                                            Expérience gastronomique
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button id="next-step-1" class="btn-primary disabled" disabled>
+                                Continuer
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 2: Nombre de voyageurs -->
+                    <div id="step-2" class="form-step p-8" style="display: none;">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-display font-light text-slate-800 mb-4">
+                                Combien de voyageurs ?
+                            </h3>
+                            <p class="text-slate-600">Spécifiez le nombre de personnes</p>
+                        </div>
+
+                        <div class="max-w-md mx-auto space-y-6 mb-12">
+                            <!-- Adultes -->
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div>
+                                    <div class="font-semibold text-slate-800">Adultes</div>
+                                    <div class="text-sm text-slate-500">13 ans et plus</div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="counter-btn" data-action="decrease" data-target="adults">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span id="adults-count" class="text-xl font-bold text-slate-800 w-8 text-center">2</span>
+                                    <button type="button" class="counter-btn" data-action="increase" data-target="adults">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Enfants -->
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div>
+                                    <div class="font-semibold text-slate-800">Enfants</div>
+                                    <div class="text-sm text-slate-500">2-12 ans</div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="counter-btn" data-action="decrease" data-target="children">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span id="children-count" class="text-xl font-bold text-slate-800 w-8 text-center">0</span>
+                                    <button type="button" class="counter-btn" data-action="increase" data-target="children">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Bébés -->
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div>
+                                    <div class="font-semibold text-slate-800">Bébés</div>
+                                    <div class="text-sm text-slate-500">Moins de 2 ans</div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="counter-btn" data-action="decrease" data-target="babies">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span id="babies-count" class="text-xl font-bold text-slate-800 w-8 text-center">0</span>
+                                    <button type="button" class="counter-btn" data-action="increase" data-target="babies">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center space-x-4">
+                            <button id="prev-step-2" class="btn-secondary">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                Retour
+                            </button>
+                            <button id="next-step-2" class="btn-primary">
+                                Continuer
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 3: Sélection des dates -->
+                    <div id="step-3" class="form-step p-8" style="display: none;">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-display font-light text-slate-800 mb-4">
+                                Quand souhaitez-vous voyager ?
+                            </h3>
+                            <p class="text-slate-600">Sélectionnez votre date de départ</p>
+                        </div>
+
+                        <div class="max-w-4xl mx-auto mb-12">
+                            <div id="calendar-container" class="grid md:grid-cols-2 gap-8">
+                                <!-- Le calendrier sera généré par JavaScript -->
+                            </div>
+
+                            <div class="text-center mt-8">
+                                <button id="flexible-dates" class="text-amber-600 hover:text-amber-700 font-medium border-b border-amber-600 hover:border-amber-700 transition-colors">
+                                    Je n'ai pas de dates précises
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center space-x-4">
+                            <button id="prev-step-3" class="btn-secondary">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                Retour
+                            </button>
+                            <button id="next-step-3" class="btn-primary disabled" disabled>
+                                Voir le récapitulatif
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 4: Récapitulatif -->
+                    <div id="step-4" class="form-step p-8" style="display: none;">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-display font-light text-slate-800 mb-4">
+                                Récapitulatif de votre séjour
+                            </h3>
+                            <p class="text-slate-600">Vérifiez les détails de votre réservation</p>
+                        </div>
+
+                        <div class="max-w-2xl mx-auto">
+                            <!-- Récapitulatif -->
+                            <div class="bg-slate-50 rounded-2xl p-8 mb-8">
+                                <div id="booking-summary">
+                                    <!-- Contenu généré par JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Prix total -->
+                            <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-2xl p-6 mb-8">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-semibold">Prix total estimé :</span>
+                                    <span id="total-price" class="text-3xl font-bold">0€</span>
+                                </div>
+                                <p class="text-amber-100 text-sm mt-2">Prix par personne, transport inclus</p>
+                            </div>
+
+                            <!-- Formulaire de contact -->
+                            <div class="bg-white border border-slate-200 rounded-2xl p-6 mb-8">
+                                <h4 class="text-xl font-semibold text-slate-800 mb-6">Vos coordonnées</h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Prénom *</label>
+                                        <input type="text" id="first-name" required class="form-input">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Nom *</label>
+                                        <input type="text" id="last-name" required class="form-input">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Email *</label>
+                                        <input type="email" id="email" required class="form-input">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Téléphone *</label>
+                                        <input type="tel" id="phone" required class="form-input">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Message (optionnel)</label>
+                                        <textarea id="message" rows="3" class="form-input" placeholder="Demandes particulières, questions..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Boutons finaux -->
+                            <div class="flex justify-center space-x-4">
+                                <button id="prev-step-4" class="btn-secondary">
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Retour
+                                </button>
+                                <button id="submit-booking" class="btn-primary">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Envoyer ma demande
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -604,7 +888,10 @@
         </div>
     </footer>
 
+    <!-- EmailJS pour l'envoi d'emails -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
     <script src="echappees-animations.js"></script>
+    <script src="reservation-form.js"></script>
 </body>
 </html> 
