@@ -382,4 +382,30 @@ body {
   .form-step {
     min-height: 400px;
   }
+}
+
+.language-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    transform: scale(1.1);
+    border-color: rgba(157, 177, 124, 0.5);
+}
+
+.language-btn.active {
+    border-color: #9DB17C;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(157, 177, 124, 0.5);
+}
+        
+/* Effets de Ciel (Nuages) - Version Améliorée */
+.cloud {
+    position: absolute;
 } 

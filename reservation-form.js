@@ -7,6 +7,7 @@ class ReservationForm {
   constructor() {
     this.currentStep = 1;
     this.maxSteps = 4;
+    this.currentMonthOffset = 0; // Pour la navigation du calendrier
     this.formData = {
       stayType: "",
       stayPrice: 0,
@@ -183,6 +184,19 @@ class ReservationForm {
       this.enableButton("next-step-3");
       console.log("📅 Dates flexibles sélectionnées");
     });
+
+    // Navigation calendrier
+    document.getElementById("prev-months")?.addEventListener("click", () => {
+      if (this.currentMonthOffset > 0) {
+        this.currentMonthOffset -= 2;
+        this.generateCalendar();
+      }
+    });
+
+    document.getElementById("next-months")?.addEventListener("click", () => {
+      this.currentMonthOffset += 2;
+      this.generateCalendar();
+    });
   }
 
   bindContactFormEvents() {
@@ -249,34 +263,105 @@ class ReservationForm {
 
   generateCalendar() {
     const container = document.getElementById("calendar-container");
+    const periodElement = document.getElementById("calendar-period");
+    const prevBtn = document.getElementById("prev-months");
+    const nextBtn = document.getElementById("next-months");
+
     if (!container) return;
 
-    const months = [
-      { name: "Juin 2025", year: 2025, month: 5, days: 30 },
-      { name: "Juillet 2025", year: 2025, month: 6, days: 31 },
-    ];
+    // Générer tous les mois disponibles
+    const months = this.generateMonthsData();
+    container.innerHTML = "";
 
-    months.forEach((monthData, monthIndex) => {
+    // Afficher seulement 2 mois à partir de currentMonthOffset
+    const monthsToShow = months.slice(
+      this.currentMonthOffset,
+      this.currentMonthOffset + 2
+    );
+
+    monthsToShow.forEach((monthData, displayIndex) => {
+      const actualIndex = this.currentMonthOffset + displayIndex;
       const monthDiv = document.createElement("div");
-      monthDiv.className = "calendar-month";
+      monthDiv.className =
+        "bg-white rounded-2xl p-4 shadow-sm border border-slate-200";
 
       monthDiv.innerHTML = `
-                <h4 class="text-lg font-semibold text-amber-600 mb-4">${monthData.name}</h4>
+                <h4 class="text-lg font-semibold text-amber-600 mb-4 text-center">${monthData.name}</h4>
                 <div class="grid grid-cols-7 gap-1 text-xs text-slate-500 mb-2">
-                    <div class="text-center py-2">Lun</div>
-                    <div class="text-center py-2">Mar</div>
-                    <div class="text-center py-2">Mer</div>
-                    <div class="text-center py-2">Jeu</div>
-                    <div class="text-center py-2">Ven</div>
-                    <div class="text-center py-2">Sam</div>
-                    <div class="text-center py-2">Dim</div>
+                    <div class="text-center py-2 font-medium">L</div>
+                    <div class="text-center py-2 font-medium">M</div>
+                    <div class="text-center py-2 font-medium">M</div>
+                    <div class="text-center py-2 font-medium">J</div>
+                    <div class="text-center py-2 font-medium">V</div>
+                    <div class="text-center py-2 font-medium">S</div>
+                    <div class="text-center py-2 font-medium">D</div>
                 </div>
-                <div class="grid grid-cols-7 gap-1" id="month-${monthIndex}"></div>
+                <div class="grid grid-cols-7 gap-1" id="month-${actualIndex}"></div>
             `;
 
       container.appendChild(monthDiv);
-      this.generateMonthDays(monthIndex, monthData);
+      this.generateMonthDays(actualIndex, monthData);
     });
+
+    // Mettre à jour l'affichage de la période
+    if (periodElement && monthsToShow.length > 0) {
+      if (monthsToShow.length === 2) {
+        periodElement.textContent = `${monthsToShow[0].name} - ${monthsToShow[1].name}`;
+      } else {
+        periodElement.textContent = monthsToShow[0].name;
+      }
+    }
+
+    // Gérer l'état des boutons
+    if (prevBtn) {
+      prevBtn.disabled = this.currentMonthOffset === 0;
+      prevBtn.style.opacity = this.currentMonthOffset === 0 ? "0.5" : "1";
+    }
+
+    if (nextBtn) {
+      nextBtn.disabled = this.currentMonthOffset + 2 >= months.length;
+      nextBtn.style.opacity =
+        this.currentMonthOffset + 2 >= months.length ? "0.5" : "1";
+    }
+  }
+
+  generateMonthsData() {
+    const months = [];
+    const monthNames = [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre",
+    ];
+
+    const today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+
+    // Générer 12 mois à partir du mois actuel
+    for (let i = 0; i < 12; i++) {
+      const month = (currentMonth + i) % 12;
+      const year = currentYear + Math.floor((currentMonth + i) / 12);
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      months.push({
+        name: `${monthNames[month]} ${year}`,
+        year: year,
+        month: month,
+        days: daysInMonth,
+        monthName: monthNames[month],
+      });
+    }
+
+    return months;
   }
 
   generateMonthDays(monthIndex, monthData) {
@@ -285,6 +370,12 @@ class ReservationForm {
 
     const firstDay = new Date(monthData.year, monthData.month, 1).getDay();
     const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
+
+    const today = new Date();
+    const isCurrentMonth =
+      monthData.year === today.getFullYear() &&
+      monthData.month === today.getMonth();
+    const todayDate = today.getDate();
 
     // Jours vides au début
     for (let i = 0; i < adjustedFirstDay; i++) {
@@ -298,30 +389,38 @@ class ReservationForm {
       dayElement.className = "calendar-day";
       dayElement.textContent = day;
 
-      dayElement.addEventListener("click", () => {
-        // Désélectionner toutes les dates
-        document.querySelectorAll(".calendar-day.selected").forEach((d) => {
-          d.classList.remove("selected");
+      // Vérifier si c'est un jour passé
+      const isPastDay = isCurrentMonth && day < todayDate;
+      if (isPastDay) {
+        dayElement.classList.add("disabled");
+        dayElement.style.opacity = "0.3";
+        dayElement.style.cursor = "not-allowed";
+      } else {
+        dayElement.addEventListener("click", () => {
+          // Désélectionner toutes les dates
+          document.querySelectorAll(".calendar-day.selected").forEach((d) => {
+            d.classList.remove("selected");
+          });
+
+          // Sélectionner cette date
+          dayElement.classList.add("selected");
+
+          // Sauvegarder la date
+          this.formData.selectedDate = {
+            day: day,
+            month: monthData.month + 1,
+            year: monthData.year,
+            monthName: monthData.monthName,
+          };
+
+          this.formData.isFlexibleDates = false;
+          this.enableButton("next-step-3");
+
+          console.log(
+            `📅 Date sélectionnée: ${day} ${this.formData.selectedDate.monthName} ${monthData.year}`
+          );
         });
-
-        // Sélectionner cette date
-        dayElement.classList.add("selected");
-
-        // Sauvegarder la date
-        this.formData.selectedDate = {
-          day: day,
-          month: monthData.month + 1,
-          year: monthData.year,
-          monthName: monthData.name.split(" ")[0],
-        };
-
-        this.formData.isFlexibleDates = false;
-        this.enableButton("next-step-3");
-
-        console.log(
-          `📅 Date sélectionnée: ${day} ${this.formData.selectedDate.monthName} ${monthData.year}`
-        );
-      });
+      }
 
       monthGrid.appendChild(dayElement);
     }
@@ -363,26 +462,28 @@ class ReservationForm {
     }</span>
                 </div>
                 <div class="flex justify-between items-center py-3 border-b border-slate-200">
-                    <span class="text-slate-600">Date de départ</span>
+                    <span class="text-slate-600">Date</span>
                     <span class="font-semibold text-slate-800">${dateText}</span>
                 </div>
                 <div class="py-3">
-                    <div class="text-slate-600 mb-2">Détail des voyageurs:</div>
+                    <div class="text-slate-600 mb-2">Détail des voyageurs</div>
                     <div class="text-sm text-slate-700 space-y-1 ml-4">
-                        <div>• ${this.formData.adults} adulte${
-      this.formData.adults > 1 ? "s" : ""
+                        <div>• ${this.formData.adults} ${
+      this.formData.adults > 1 ? "adultes" : "adulte"
     }</div>
                         ${
                           this.formData.children > 0
-                            ? `<div>• ${this.formData.children} enfant${
-                                this.formData.children > 1 ? "s" : ""
+                            ? `<div>• ${this.formData.children} ${
+                                this.formData.children > 1
+                                  ? "enfants"
+                                  : "enfant"
                               }</div>`
                             : ""
                         }
                         ${
                           this.formData.babies > 0
-                            ? `<div>• ${this.formData.babies} bébé${
-                                this.formData.babies > 1 ? "s" : ""
+                            ? `<div>• ${this.formData.babies} ${
+                                this.formData.babies > 1 ? "bébés" : "bébé"
                               }</div>`
                             : ""
                         }
@@ -392,6 +493,14 @@ class ReservationForm {
         `;
 
     totalPriceElement.textContent = `${totalPrice}€`;
+
+    // Also update the static labels for price
+    const priceLabel = document.querySelector("#total-price-label");
+    if (priceLabel) priceLabel.textContent = "Prix total estimé :";
+
+    const priceSubLabel = document.querySelector("#total-price-sublabel");
+    if (priceSubLabel)
+      priceSubLabel.textContent = "Prix par personne, transport inclus";
   }
 
   validateContactForm() {
@@ -544,12 +653,16 @@ class ReservationForm {
     }`;
     if (this.formData.children > 0) {
       travelersDetail += `, ${this.formData.children} enfant${
-        this.formData.children > 1 ? "s" : ""
+        this.formData.children > 1
+          ? tr["form-summary-children"]
+          : tr["form-summary-child"]
       }`;
     }
     if (this.formData.babies > 0) {
       travelersDetail += `, ${this.formData.babies} bébé${
-        this.formData.babies > 1 ? "s" : ""
+        this.formData.babies > 1
+          ? tr["form-summary-babies"]
+          : tr["form-summary-baby"]
       }`;
     }
 

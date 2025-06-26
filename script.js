@@ -334,38 +334,23 @@ function initializeNavigation() {
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
+  // Effet de défilement pour la barre de navigation
+  if (navbar) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  }
 
-  mobileMenuBtn?.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.contains("active");
-
-    if (!isOpen) {
-      mobileMenu.classList.remove("hidden");
-      mobileMenu.classList.add("active");
-
-      gsap.from(mobileMenu.querySelectorAll("a"), {
-        duration: 0.3,
-        y: -20,
-        opacity: 0,
-        stagger: 0.1,
-        ease: "power2.out",
-      });
-    } else {
-      gsap.to(mobileMenu.querySelectorAll("a"), {
-        duration: 0.2,
-        y: -10,
-        opacity: 0,
-        stagger: 0.05,
-        ease: "power2.in",
-        onComplete: () => {
-          mobileMenu.classList.add("hidden");
-          mobileMenu.classList.remove("active");
-        },
-      });
-    }
-  });
+  // Ouverture/fermeture du menu mobile
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -496,55 +481,3 @@ window
       document.body.classList.remove("dark-mode");
     }
   });
-
-// Gestion des langues
-function updateActiveLanguageButton() {
-  if (typeof getCurrentLanguage !== "function") return;
-
-  const currentLang = getCurrentLanguage();
-  const languageButtons = document.querySelectorAll(".language-btn");
-
-  languageButtons.forEach((btn) => {
-    btn.classList.remove("active");
-    const btnOnclick = btn.getAttribute("onclick");
-    if (btnOnclick) {
-      const match = btnOnclick.match(/'(\w+)'/);
-      if (match && match[1] === currentLang) {
-        btn.classList.add("active");
-      }
-    }
-  });
-}
-
-// Redéfinir la fonction changeLanguage globale
-window.changeLanguage = function (language) {
-  localStorage.setItem("selectedLanguage", language);
-  if (typeof translatePage === "function") {
-    translatePage();
-  }
-  updateActiveLanguageButton();
-
-  // Animation lors du changement de langue
-  const elements = document.querySelectorAll("[data-translate]");
-  gsap.fromTo(
-    elements,
-    { opacity: 0.7 },
-    {
-      opacity: 1,
-      duration: 0.3,
-      stagger: 0.02,
-      ease: "power2.out",
-    }
-  );
-};
-
-// Initialiser les langues au chargement
-document.addEventListener("DOMContentLoaded", function () {
-  // Attendre que le fichier translations.js soit chargé
-  setTimeout(() => {
-    if (typeof translatePage === "function") {
-      translatePage();
-      updateActiveLanguageButton();
-    }
-  }, 100);
-});

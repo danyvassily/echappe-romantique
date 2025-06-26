@@ -91,6 +91,7 @@
                     <a href="signature.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Signature</a>
                     <a href="echappees.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Récapitulatif</a>
                     <a href="decouverte.html" class="text-slate-600 hover:text-amber-600 transition-colors text-sm font-medium">Découverte</a>
+
                 </div>
                 
                 <div class="md:hidden">
@@ -107,6 +108,7 @@
                 <a href="signature.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Signature</a>
                 <a href="echappees.html" class="block px-3 py-2 text-amber-600 font-semibold bg-amber-50 rounded-lg text-sm">Récapitulatif</a>
                 <a href="decouverte.html" class="block px-3 py-2 text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg transition-colors text-sm">Découverte</a>
+
             </div>
         </div>
     </nav>
@@ -634,15 +636,15 @@
                                     <div class="mt-6 space-y-2 text-sm text-slate-600">
                                         <div class="flex items-center justify-center">
                                             <i class="fas fa-check text-amber-600 mr-2"></i>
-                                            Domaine de l'Arbrelle
+                                            <span>Domaine de l'Arbrelle</span>
                                         </div>
                                         <div class="flex items-center justify-center">
                                             <i class="fas fa-check text-amber-600 mr-2"></i>
-                                            Château d'Amboise inclus
+                                            <span>Château d'Amboise inclus</span>
                                         </div>
                                         <div class="flex items-center justify-center">
                                             <i class="fas fa-check text-amber-600 mr-2"></i>
-                                            Petit-déjeuner inclus
+                                            <span>Petit-déjeuner inclus</span>
                                         </div>
                                     </div>
                                 </div>
@@ -663,15 +665,15 @@
                                     <div class="mt-6 space-y-2 text-sm text-slate-600">
                                         <div class="flex items-center justify-center">
                                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                                            Le Clos d'Amboise
+                                            <span>Le Clos d'Amboise</span>
                                         </div>
                                         <div class="flex items-center justify-center">
                                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                                            Spa & Massage duo
+                                            <span>Spa & Massage duo</span>
                                         </div>
                                         <div class="flex items-center justify-center">
                                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                                            Expérience gastronomique
+                                            <span>Expérience gastronomique</span>
                                         </div>
                                     </div>
                                 </div>
@@ -680,7 +682,7 @@
 
                         <div class="text-center">
                             <button id="next-step-1" class="btn-primary disabled" disabled>
-                                Continuer
+                                <span>Continuer</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </button>
                         </div>
@@ -751,10 +753,10 @@
                         <div class="flex justify-center space-x-4">
                             <button id="prev-step-2" class="btn-secondary">
                                 <i class="fas fa-arrow-left mr-2"></i>
-                                Retour
+                                <span>Retour</span>
                             </button>
                             <button id="next-step-2" class="btn-primary">
-                                Continuer
+                                <span>Continuer</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </button>
                         </div>
@@ -770,6 +772,19 @@
                         </div>
 
                         <div class="max-w-4xl mx-auto mb-12">
+                            <!-- Navigation du calendrier -->
+                            <div class="flex justify-between items-center mb-6">
+                                <button id="prev-months" class="flex items-center px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-chevron-left mr-2"></i>
+                                    Précédent
+                                </button>
+                                <div id="calendar-period" class="text-lg font-semibold text-slate-800"></div>
+                                <button id="next-months" class="flex items-center px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+                                    Suivant
+                                    <i class="fas fa-chevron-right ml-2"></i>
+                                </button>
+                            </div>
+                            
                             <div id="calendar-container" class="grid md:grid-cols-2 gap-8">
                                 <!-- Le calendrier sera généré par JavaScript -->
                             </div>
@@ -784,10 +799,10 @@
                         <div class="flex justify-center space-x-4">
                             <button id="prev-step-3" class="btn-secondary">
                                 <i class="fas fa-arrow-left mr-2"></i>
-                                Retour
+                                <span>Retour</span>
                             </button>
                             <button id="next-step-3" class="btn-primary disabled" disabled>
-                                Voir le récapitulatif
+                                <span>Voir le récapitulatif</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </button>
                         </div>
@@ -813,10 +828,10 @@
                             <!-- Prix total -->
                             <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-2xl p-6 mb-8">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xl font-semibold">Prix total estimé :</span>
+                                    <span id="total-price-label" class="text-xl font-semibold">Prix total estimé :</span>
                                     <span id="total-price" class="text-3xl font-bold">0€</span>
                                 </div>
-                                <p class="text-amber-100 text-sm mt-2">Prix par personne, transport inclus</p>
+                                <p id="total-price-sublabel" class="text-amber-100 text-sm mt-2">Prix par personne, transport inclus</p>
                             </div>
 
                             <!-- Formulaire de contact -->
@@ -850,11 +865,11 @@
                             <div class="flex justify-center space-x-4">
                                 <button id="prev-step-4" class="btn-secondary">
                                     <i class="fas fa-arrow-left mr-2"></i>
-                                    Retour
+                                    <span>Retour</span>
                                 </button>
                                 <button id="submit-booking" class="btn-primary">
                                     <i class="fas fa-paper-plane mr-2"></i>
-                                    Envoyer ma demande
+                                    <span>Envoyer ma demande</span>
                                 </button>
                             </div>
                         </div>
@@ -1001,8 +1016,7 @@
 
     <!-- EmailJS pour l'envoi d'emails -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="translations.js"></script>
-    <script src="language-config.js"></script>
+
     <script src="script.js"></script>
     <script src="echappees-animations.js"></script>
     <script src="reservation-form.js"></script>

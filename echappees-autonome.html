@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Échappée Romantique - Version Autonome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <style>
+        /* Styles intégrés pour éviter les dépendances externes */
+        body { font-family: 'Georgia', serif; }
+        
+        /* Formulaire */
+        .step-indicator.active div { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .step-indicator.active span { color: #1e293b; font-weight: 600; }
+        .form-step { display: none; opacity: 0; transition: opacity 0.3s ease; }
+        .form-step.active { display: block; opacity: 1; }
+        .stay-option { transition: all 0.3s ease; cursor: pointer; }
+        .stay-option:hover { border-color: #f59e0b; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2); }
+        .stay-option.selected { border-color: #f59e0b; background: #fef3c7; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
+        .btn-primary { background: linear-gradient(135deg, #f59e0b, #d97706); transition: all 0.3s ease; }
+        .btn-primary:hover:not(:disabled) { background: linear-gradient(135deg, #d97706, #b45309); transform: translateY(-2px); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .calendar-day { padding: 0.5rem; text-align: center; cursor: pointer; border-radius: 0.375rem; transition: all 0.2s ease; background: #f8fafc; border: 1px solid #e2e8f0; font-weight: 500; min-height: 2.5rem; display: flex; align-items: center; justify-content: center; }
+        .calendar-day:hover { background: #fef3c7; color: #d97706; }
+        .calendar-day.selected { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
+        .calendar-day.disabled { color: #cbd5e1; cursor: not-allowed; opacity: 0.3; }
+        .counter-btn { width: 40px; height: 40px; border-radius: 50%; background: white; border: 2px solid #e2e8f0; color: #475569; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .counter-btn:hover { border-color: #f59e0b; background: #fef3c7; color: #d97706; transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navigation simple -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-plane text-white text-sm"></i>
+                    </div>
+                    <div class="text-lg font-bold text-slate-800">Échappée-romantique</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-slate-100 pt-20">
+        <div class="relative z-10 max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-5xl sm:text-6xl font-bold text-slate-800 mb-6">
+                Nos Séjours
+                <span class="block bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent mt-4">d'Exception</span>
+            </h1>
+            <p class="text-xl text-slate-600 mb-12 max-w-3xl mx-auto">
+                2 formules de séjours romantiques avec chauffeur privé en vallée de la Loire
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Formulaire de Réservation -->
+    <section id="reservation-section" class="py-24 bg-gradient-to-br from-slate-50 to-amber-50/30">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-slate-800 mb-6">Réservez votre échappée</h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                    🚀 VERSION AUTONOME - Tous les scripts sont intégrés
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Indicateurs d'étapes -->
+                <div class="mb-12">
+                    <div class="flex items-center justify-center space-x-8">
+                        <div class="flex items-center space-x-2 step-indicator active" data-step="1">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold bg-slate-200 text-slate-600">1</div>
+                            <span class="hidden sm:block font-medium text-slate-600">Type de séjour</span>
+                        </div>
+                        <div class="w-8 h-1 bg-slate-200 rounded"></div>
+                        <div class="flex items-center space-x-2 step-indicator" data-step="2">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold bg-slate-200 text-slate-600">2</div>
+                            <span class="hidden sm:block font-medium text-slate-600">Voyageurs</span>
+                        </div>
+                        <div class="w-8 h-1 bg-slate-200 rounded"></div>
+                        <div class="flex items-center space-x-2 step-indicator" data-step="3">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold bg-slate-200 text-slate-600">3</div>
+                            <span class="hidden sm:block font-medium text-slate-600">Dates</span>
+                        </div>
+                        <div class="w-8 h-1 bg-slate-200 rounded"></div>
+                        <div class="flex items-center space-x-2 step-indicator" data-step="4">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold bg-slate-200 text-slate-600">4</div>
+                            <span class="hidden sm:block font-medium text-slate-600">Contact</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire principal -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    
+                    <!-- Étape 1: Choix du séjour -->
+                    <div id="step-1" class="form-step active p-8">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-bold text-slate-800 mb-4">Quel type de séjour souhaitez-vous ?</h3>
+                            <p class="text-slate-600">Choisissez la formule qui vous correspond</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                            <!-- Option Découverte -->
+                            <div class="stay-option border-2 border-slate-200 rounded-2xl p-8" data-type="decouverte" data-price="750">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <i class="fas fa-star text-amber-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-slate-800 mb-3">Échappée Découverte</h4>
+                                    <p class="text-slate-600 mb-4">Domaine de l'Arbrelle, Amboise</p>
+                                    <div class="text-amber-600 font-bold text-xl">750€ par personne</div>
+                                </div>
+                            </div>
+
+                            <!-- Option Signature -->
+                            <div class="stay-option border-2 border-slate-200 rounded-2xl p-8" data-type="signature" data-price="1200">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <i class="fas fa-heart text-pink-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-slate-800 mb-3">Séjour Signature</h4>
+                                    <p class="text-slate-600 mb-4">Le Clos d'Amboise</p>
+                                    <div class="text-pink-600 font-bold text-xl">1200€ par personne</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button id="next-step-1" class="btn-primary text-white font-semibold py-4 px-8 rounded-xl" disabled>
+                                Continuer <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 2: Nombre de voyageurs -->
+                    <div id="step-2" class="form-step p-8">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-bold text-slate-800 mb-4">Combien de voyageurs ?</h3>
+                            <p class="text-slate-600">Spécifiez le nombre de personnes</p>
+                        </div>
+
+                        <div class="max-w-md mx-auto space-y-6 mb-12">
+                            <!-- Adultes -->
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div>
+                                    <div class="font-semibold text-slate-800">Adultes</div>
+                                    <div class="text-sm text-slate-500">13 ans et plus</div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="counter-btn" data-action="decrease" data-target="adults">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span id="adults-count" class="text-xl font-bold text-slate-800 w-8 text-center">2</span>
+                                    <button type="button" class="counter-btn" data-action="increase" data-target="adults">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Enfants -->
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div>
+                                    <div class="font-semibold text-slate-800">Enfants</div>
+                                    <div class="text-sm text-slate-500">2-12 ans</div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="counter-btn" data-action="decrease" data-target="children">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span id="children-count" class="text-xl font-bold text-slate-800 w-8 text-center">0</span>
+                                    <button type="button" class="counter-btn" data-action="increase" data-target="children">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center space-x-4">
+                            <button id="prev-step-2" class="bg-slate-200 text-slate-700 font-semibold py-3 px-8 rounded-xl hover:bg-slate-300">
+                                <i class="fas fa-arrow-left mr-2"></i> Retour
+                            </button>
+                            <button id="next-step-2" class="btn-primary text-white font-semibold py-3 px-8 rounded-xl">
+                                Continuer <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 3: Sélection des dates -->
+                    <div id="step-3" class="form-step p-8">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-bold text-slate-800 mb-4">Quand souhaitez-vous voyager ?</h3>
+                            <p class="text-slate-600">Sélectionnez votre date de départ</p>
+                        </div>
+
+                        <div class="max-w-4xl mx-auto mb-12">
+                            <!-- Navigation du calendrier -->
+                            <div class="flex justify-between items-center mb-6">
+                                <button id="prev-months" class="flex items-center px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-chevron-left mr-2"></i>
+                                    Précédent
+                                </button>
+                                <div id="calendar-period" class="text-lg font-semibold text-slate-800"></div>
+                                <button id="next-months" class="flex items-center px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+                                    Suivant
+                                    <i class="fas fa-chevron-right ml-2"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="calendar-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Le calendrier sera généré par JavaScript -->
+                            </div>
+                            
+                            <div class="text-center mt-8">
+                                <button id="flexible-dates" class="inline-flex items-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-xl transition-colors border-2 border-dashed border-slate-300 hover:border-slate-400">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    Je n'ai pas de dates précises
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center space-x-4">
+                            <button id="prev-step-3" class="bg-slate-200 text-slate-700 font-semibold py-3 px-8 rounded-xl hover:bg-slate-300">
+                                <i class="fas fa-arrow-left mr-2"></i> Retour
+                            </button>
+                            <button id="next-step-3" class="btn-primary text-white font-semibold py-3 px-8 rounded-xl" disabled>
+                                Voir le récapitulatif <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Étape 4: Contact -->
+                    <div id="step-4" class="form-step p-8">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-bold text-slate-800 mb-4">Récapitulatif et contact</h3>
+                            <p class="text-slate-600">Vérifiez vos informations et envoyez votre demande</p>
+                        </div>
+
+                        <div class="max-w-2xl mx-auto">
+                            <!-- Récapitulatif -->
+                            <div class="bg-slate-50 rounded-2xl p-8 mb-8">
+                                <div id="booking-summary">
+                                    <!-- Contenu généré par JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Prix total -->
+                            <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-2xl p-6 mb-8">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-semibold">Prix total estimé :</span>
+                                    <span id="total-price" class="text-3xl font-bold">0€</span>
+                                </div>
+                            </div>
+
+                            <!-- Formulaire de contact -->
+                            <div class="bg-white border border-slate-200 rounded-2xl p-6 mb-8">
+                                <h4 class="text-xl font-semibold text-slate-800 mb-6">Vos coordonnées</h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Prénom *</label>
+                                        <input type="text" id="first-name" required class="w-full p-3 border border-slate-300 rounded-lg focus:border-amber-500 focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Nom *</label>
+                                        <input type="text" id="last-name" required class="w-full p-3 border border-slate-300 rounded-lg focus:border-amber-500 focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Email *</label>
+                                        <input type="email" id="email" required class="w-full p-3 border border-slate-300 rounded-lg focus:border-amber-500 focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Téléphone *</label>
+                                        <input type="tel" id="phone" required class="w-full p-3 border border-slate-300 rounded-lg focus:border-amber-500 focus:outline-none">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Message (optionnel)</label>
+                                        <textarea id="message" rows="3" class="w-full p-3 border border-slate-300 rounded-lg focus:border-amber-500 focus:outline-none" placeholder="Demandes particulières..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center space-x-4">
+                                <button id="prev-step-4" class="bg-slate-200 text-slate-700 font-semibold py-3 px-8 rounded-xl hover:bg-slate-300">
+                                    <i class="fas fa-arrow-left mr-2"></i> Retour
+                                </button>
+                                <button id="submit-booking" class="btn-primary text-white font-semibold py-3 px-8 rounded-xl" disabled>
+                                    <i class="fas fa-paper-plane mr-2"></i> Envoyer ma demande
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript intégré - TOUT EN UN -->
+    <script>
+        // 🚀 FORMULAIRE AUTONOME - HOSTINGER READY
+        console.log('🚀 Initialisation du formulaire autonome...');
+
+        // Variables globales
+        let currentStep = 1;
+        let maxSteps = 4;
+        let currentMonthOffset = 0; // Pour la navigation du calendrier
+        let formData = {
+            stayType: '',
+            stayPrice: 0,
+            adults: 2,
+            children: 0,
+            selectedDate: null,
+            isFlexibleDates: false,
+            contactInfo: {}
+        };
+
+        // Configuration EmailJS
+        const emailConfig = {
+            publicKey: "V8ZGd6PkWftDGDLv8",
+            serviceID: "service_ublqgxm",
+            templateID: "template_hpkeo4b"
+        };
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM chargé');
+            
+            // Initialiser EmailJS
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init(emailConfig.publicKey);
+                console.log('📧 EmailJS initialisé');
+            }
+            
+            setupEventListeners();
+            generateCalendar();
+            updateStepIndicators();
+            
+            console.log('🎉 Formulaire autonome prêt !');
+        });
+
+        function setupEventListeners() {
+            // Sélection des séjours
+            document.querySelectorAll('.stay-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    selectStayOption(this);
+                });
+            });
+
+            // Navigation
+            document.getElementById('next-step-1')?.addEventListener('click', () => nextStep());
+            document.getElementById('next-step-2')?.addEventListener('click', () => nextStep());
+            document.getElementById('next-step-3')?.addEventListener('click', () => nextStep());
+            document.getElementById('prev-step-2')?.addEventListener('click', () => prevStep());
+            document.getElementById('prev-step-3')?.addEventListener('click', () => prevStep());
+            document.getElementById('prev-step-4')?.addEventListener('click', () => prevStep());
+            document.getElementById('submit-booking')?.addEventListener('click', submitForm);
+
+            // Compteurs
+            document.querySelectorAll('.counter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    updateCounter(this);
+                });
+            });
+
+            // Dates flexibles
+            document.getElementById('flexible-dates')?.addEventListener('click', function() {
+                selectFlexibleDates();
+            });
+
+            // Navigation calendrier
+            document.getElementById('prev-months')?.addEventListener('click', function() {
+                if (currentMonthOffset > 0) {
+                    currentMonthOffset -= 2;
+                    generateCalendar();
+                }
+            });
+
+            document.getElementById('next-months')?.addEventListener('click', function() {
+                currentMonthOffset += 2;
+                generateCalendar();
+            });
+
+            // Validation contact
+            ['first-name', 'last-name', 'email', 'phone'].forEach(fieldId => {
+                document.getElementById(fieldId)?.addEventListener('input', validateContactForm);
+            });
+        }
+
+        function selectStayOption(option) {
+            document.querySelectorAll('.stay-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+            
+            formData.stayType = option.dataset.type;
+            formData.stayPrice = parseInt(option.dataset.price);
+            
+            document.getElementById('next-step-1').disabled = false;
+            console.log('✨ Séjour sélectionné:', formData);
+        }
+
+        function updateCounter(btn) {
+            const action = btn.dataset.action;
+            const target = btn.dataset.target;
+            const countElement = document.getElementById(target + '-count');
+            
+            if (!countElement) return;
+            
+            let currentValue = parseInt(countElement.textContent);
+            
+            if (action === 'increase') {
+                currentValue++;
+            } else if (action === 'decrease' && currentValue > 0) {
+                currentValue--;
+                if (target === 'adults' && currentValue < 1) {
+                    currentValue = 1;
+                }
+            }
+            
+            countElement.textContent = currentValue;
+            formData[target] = currentValue;
+        }
+
+        function generateCalendar() {
+            const container = document.getElementById('calendar-container');
+            const periodElement = document.getElementById('calendar-period');
+            const prevBtn = document.getElementById('prev-months');
+            const nextBtn = document.getElementById('next-months');
+            
+            if (!container) return;
+
+            const months = generateMonthsData();
+            container.innerHTML = '';
+
+            // Afficher seulement 2 mois à partir de currentMonthOffset
+            const monthsToShow = months.slice(currentMonthOffset, currentMonthOffset + 2);
+            
+            monthsToShow.forEach((monthData, displayIndex) => {
+                const actualIndex = currentMonthOffset + displayIndex;
+                const monthDiv = document.createElement('div');
+                monthDiv.className = 'bg-white rounded-2xl p-4 shadow-sm border border-slate-200';
+                
+                monthDiv.innerHTML = `
+                    <h4 class="text-lg font-semibold text-amber-600 mb-4 text-center">${monthData.name}</h4>
+                    <div class="grid grid-cols-7 gap-1 text-xs text-slate-500 mb-2">
+                        <div class="text-center py-2 font-medium">L</div>
+                        <div class="text-center py-2 font-medium">M</div>
+                        <div class="text-center py-2 font-medium">M</div>
+                        <div class="text-center py-2 font-medium">J</div>
+                        <div class="text-center py-2 font-medium">V</div>
+                        <div class="text-center py-2 font-medium">S</div>
+                        <div class="text-center py-2 font-medium">D</div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-1" id="month-${actualIndex}"></div>
+                `;
+                
+                container.appendChild(monthDiv);
+                generateMonthDays(actualIndex, monthData);
+            });
+
+            // Mettre à jour l'affichage de la période
+            if (periodElement && monthsToShow.length > 0) {
+                if (monthsToShow.length === 2) {
+                    periodElement.textContent = `${monthsToShow[0].name} - ${monthsToShow[1].name}`;
+                } else {
+                    periodElement.textContent = monthsToShow[0].name;
+                }
+            }
+
+            // Gérer l'état des boutons
+            if (prevBtn) {
+                prevBtn.disabled = currentMonthOffset === 0;
+                prevBtn.style.opacity = currentMonthOffset === 0 ? '0.5' : '1';
+            }
+            
+            if (nextBtn) {
+                nextBtn.disabled = currentMonthOffset + 2 >= months.length;
+                nextBtn.style.opacity = currentMonthOffset + 2 >= months.length ? '0.5' : '1';
+            }
+        }
+
+        function generateMonthsData() {
+            const months = [];
+            const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+            
+            const today = new Date();
+            let currentMonth = today.getMonth();
+            let currentYear = today.getFullYear();
+            
+            for (let i = 0; i < 12; i++) {
+                const month = (currentMonth + i) % 12;
+                const year = currentYear + Math.floor((currentMonth + i) / 12);
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                
+                months.push({
+                    name: `${monthNames[month]} ${year}`,
+                    year: year,
+                    month: month,
+                    days: daysInMonth,
+                    monthName: monthNames[month]
+                });
+            }
+            
+            return months;
+        }
+
+        function generateMonthDays(monthIndex, monthData) {
+            const monthGrid = document.getElementById(`month-${monthIndex}`);
+            if (!monthGrid) return;
+
+            const firstDay = new Date(monthData.year, monthData.month, 1).getDay();
+            const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
+            
+            const today = new Date();
+            const isCurrentMonth = monthData.year === today.getFullYear() && monthData.month === today.getMonth();
+            const todayDate = today.getDate();
+
+            // Jours vides au début
+            for (let i = 0; i < adjustedFirstDay; i++) {
+                const emptyDay = document.createElement('div');
+                monthGrid.appendChild(emptyDay);
+            }
+
+            // Jours du mois
+            for (let day = 1; day <= monthData.days; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+
+                const isPastDay = isCurrentMonth && day < todayDate;
+                if (isPastDay) {
+                    dayElement.classList.add('disabled');
+                } else {
+                    dayElement.addEventListener('click', function() {
+                        selectDate(this, day, monthData);
+                    });
+                }
+
+                monthGrid.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(element, day, monthData) {
+            document.querySelectorAll('.calendar-day.selected').forEach(d => {
+                d.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            
+            formData.selectedDate = {
+                day: day,
+                month: monthData.month + 1,
+                year: monthData.year,
+                monthName: monthData.monthName
+            };
+            formData.isFlexibleDates = false;
+            
+            document.getElementById('next-step-3').disabled = false;
+            console.log('📅 Date sélectionnée:', formData.selectedDate);
+        }
+
+        function selectFlexibleDates() {
+            document.querySelectorAll('.calendar-day.selected').forEach(d => {
+                d.classList.remove('selected');
+            });
+            
+            formData.isFlexibleDates = true;
+            formData.selectedDate = null;
+            document.getElementById('next-step-3').disabled = false;
+            console.log('📅 Dates flexibles sélectionnées');
+        }
+
+        function nextStep() {
+            if (currentStep < maxSteps) {
+                showStep(currentStep + 1);
+                if (currentStep === 4) {
+                    updateSummary();
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        }
+
+        function showStep(stepNumber) {
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById(`step-${stepNumber}`)?.classList.add('active');
+            
+            document.querySelectorAll('.step-indicator').forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            document.querySelector(`[data-step="${stepNumber}"]`)?.classList.add('active');
+            
+            currentStep = stepNumber;
+        }
+
+        function updateStepIndicators() {
+            document.querySelectorAll('.step-indicator').forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            document.querySelector(`[data-step="${currentStep}"]`)?.classList.add('active');
+        }
+
+        function updateSummary() {
+            const summaryContainer = document.getElementById('booking-summary');
+            const totalPriceElement = document.getElementById('total-price');
+
+            if (!summaryContainer || !totalPriceElement) return;
+
+            const stayTypeText = formData.stayType === 'decouverte' ? 'Échappée Découverte' : 'Séjour Signature';
+            const totalTravelers = formData.adults + formData.children;
+            const dateText = formData.isFlexibleDates ? 'Dates flexibles' : 
+                `${formData.selectedDate.day} ${formData.selectedDate.monthName} ${formData.selectedDate.year}`;
+            
+            const totalPrice = formData.stayPrice * formData.adults + formData.stayPrice * 0.5 * formData.children;
+
+            summaryContainer.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                        <span class="text-slate-600">Type de séjour</span>
+                        <span class="font-semibold text-slate-800">${stayTypeText}</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                        <span class="text-slate-600">Voyageurs</span>
+                        <span class="font-semibold text-slate-800">${totalTravelers} personne${totalTravelers > 1 ? 's' : ''}</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-slate-200">
+                        <span class="text-slate-600">Date de départ</span>
+                        <span class="font-semibold text-slate-800">${dateText}</span>
+                    </div>
+                    <div class="py-3">
+                        <div class="text-slate-600 mb-2">Détail:</div>
+                        <div class="text-sm text-slate-700 space-y-1 ml-4">
+                            <div>• ${formData.adults} adulte${formData.adults > 1 ? 's' : ''}</div>
+                            ${formData.children > 0 ? `<div>• ${formData.children} enfant${formData.children > 1 ? 's' : ''}</div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            totalPriceElement.textContent = `${totalPrice}€`;
+        }
+
+        function validateContactForm() {
+            const firstName = document.getElementById('first-name')?.value.trim();
+            const lastName = document.getElementById('last-name')?.value.trim();
+            const email = document.getElementById('email')?.value.trim();
+            const phone = document.getElementById('phone')?.value.trim();
+
+            const isValid = firstName && lastName && email && phone && isValidEmail(email);
+            document.getElementById('submit-booking').disabled = !isValid;
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function submitForm() {
+            if (!validateContactForm()) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+
+            formData.contactInfo = {
+                firstName: document.getElementById('first-name').value.trim(),
+                lastName: document.getElementById('last-name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            console.log('📨 Données du formulaire:', formData);
+            
+            // Simuler l'envoi
+            document.getElementById('submit-booking').textContent = 'Envoi en cours...';
+            document.getElementById('submit-booking').disabled = true;
+            
+            setTimeout(() => {
+                alert(`✅ Demande envoyée avec succès !\n\nNous vous contacterons sous 24h à l'adresse ${formData.contactInfo.email}`);
+                
+                // Optionnel : envoyer vraiment avec EmailJS
+                if (typeof emailjs !== 'undefined') {
+                    sendEmailJS();
+                }
+            }, 2000);
+        }
+
+        function sendEmailJS() {
+            const emailData = {
+                to_name: "Échappée Romantique",
+                from_name: `${formData.contactInfo.firstName} ${formData.contactInfo.lastName}`,
+                from_email: formData.contactInfo.email,
+                phone: formData.contactInfo.phone,
+                stay_type: formData.stayType === 'decouverte' ? 'Échappée Découverte' : 'Séjour Signature',
+                travelers: `${formData.adults} adulte(s), ${formData.children} enfant(s)`,
+                travel_date: formData.isFlexibleDates ? 'Dates flexibles' : 
+                    `${formData.selectedDate.day} ${formData.selectedDate.monthName} ${formData.selectedDate.year}`,
+                message: formData.contactInfo.message || 'Aucun message particulier',
+                total_price: `${(formData.stayPrice * formData.adults + formData.stayPrice * 0.5 * formData.children)}€`
+            };
+
+            emailjs.send(emailConfig.serviceID, emailConfig.templateID, emailData)
+                .then(() => {
+                    console.log('📧 Email envoyé avec succès via EmailJS');
+                })
+                .catch((error) => {
+                    console.log('⚠️ Erreur EmailJS (mode simulation actif):', error);
+                });
+        }
+    </script>
+</body>
+</html> 
